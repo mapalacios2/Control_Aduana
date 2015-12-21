@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Tipo Operador</font></h3>
+        <p:dataTable var="cliente" value="#{tipoOperadorBean.tipoOperadores}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{tipoOperadorBean.toperadorSeleccionado}" rowKey="#{tipoOperador.codigoTipoOperador}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{tipoOperador.codigoTipoOperador}" headerText="Cédula" filterMatchMode="contains" style="width: 80px;" >
+                <h:outputText value="#{tipoOperador.codigoTipoOperador}" />
+            </p:column>
+            <p:column filterBy="#{tipoOperador.descripcion}" headerText="Nombre" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{tipoOperador.descripcion}" />
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{clienteBean.nuevoToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{clienteBean.modificarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{clienteBean.detallesToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{clienteBean.eliminarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{tipoOperadorBean.tituloFormulario}" style="width: 500px" rendered="#{tipoOperadorBean.enNueva || tipoOperadorBean.enModificar || tipoOperadorBean.enDetalles || tipoOperadorBean.nuevo}">
+            <p:panelGrid columns="3" style="width: 95%">
+
+                <p:outputLabel for="codigo" value="Codigo:" />
+                <p:inputText id="codigo" value="#{tipoOperadorBean.tipoOperador.codigoTipoOperador}" style="width: 100px;" required="true" readonly="#{tipoOperadorBean.enDetalles || tipoOperadorBean.enModificar}"/>
+                <p:message for="codigo" />
+                <p:outputLabel for="descripcion" value="Descripcion:" />
+                <p:inputText id="descripcion" value="#{tipoOperadorBean.tipoOperador.descripcion}" style="width: 200px;" required="true" readonly="#{tipoOperadorBean.enDetalles}"/>
+                <p:message for="Descripcion" />
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{tipoOperadorBean.guardarToperador()}" rendered="#{not tipoOperadorBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{tipoOperadorBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>
