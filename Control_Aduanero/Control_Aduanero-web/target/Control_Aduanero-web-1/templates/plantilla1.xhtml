@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CONTROL DE ADUANAS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/css/styles.css" type="text/css" media="all"/>
+    </h:head>
+    <h:body>
+        <panel>
+            <f:view>
+                <div id="cabecera">
+                    <img src="#{facesContext.externalContext.requestContextPath}/images/aduana.gif"/>
+                </div>
+                <h:form>
+                    <p:menubar style="height: 25px">                                                                                           
+                    </p:menubar>
+                </h:form>
+                <div id="main">
+                    <div id="menuLateral">
+                        <h:form>
+                            <ui:insert name="menuLateral"/>
+                        </h:form>
+                    </div>
+                    <div id="contenido">  
+                        <h:form>
+                            <ui:insert name="contenido"/>
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" severity="info,error" globalOnly="true" escape="false" />
+                        </h:form>
+                    </div>
+                </div>
+                <div id="pie">
+                    <p:outputLabel style="font-size: small" value="Copyright &#169; 2015"/><br/>
+                    <p:outputLabel style="font-size: small" value="Contactos: mapalacios2@gmail.com"/><br/>
+                </div>
+            </f:view>
+        </panel>
+    </h:body>
+</html>

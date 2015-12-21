@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                template="/templates/plantilla1.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="contenido">
+        <p:panel styleClass="noBorders" style="height: 360px; width: 630px; padding-top: auto; padding-left: auto; border-color: #FFF">
+            <p:galleria value="#{galeriaBean.images}" var="image" effect="slide" effectSpeed="1000" showFilmstrip="false" panelHeight="340">
+                <p:graphicImage value="/images/#{image}" style="padding-left:auto !important;"/>
+            </p:galleria>
+        </p:panel> 
+    </ui:define>
+
+
+    <ui:define name="menuLateral">  
+
+        <p:spacer height="10"/>
+        <h:form>
+
+            <p:growl autoUpdate="true"/>
+            <p:panelMenu style="width:auto; height: auto;">
+                <p:submenu label="Inicio"> 
+                    <p:menuitem value="Informacion"  icon="ui-icon-home" outcome="/principal" />                             
+
+                </p:submenu>
+                <p:submenu label="Gestionar">
+                    <p:menuitem value="Tipo de Operadores"   ajax="true" icon="ui-icon-person" outcome="/tipoOperador" />
+                    <p:menuitem value="Operadores"   ajax="true" icon="ui-icon-person" />
+                    <p:menuitem value="Usuarios"   ajax="true" icon="ui-icon-person" />
+
+                </p:submenu>
+                <p:separator />
+                <p:submenu label="Productos" > 
+                    <p:menuitem value="Gestion de Productos" icon="ui-icon-transferthick-e-w" />                             
+                    <p:menuitem value="Historial de Productos" icon=" ui-icon-cart" />
+                    <p:menuitem value="Partida y Subpartida" icon="ui-icon-suitcase" />
+                </p:submenu>
+
+                <p:separator />
+                <p:submenu label="Localizacion">
+                    <p:menuitem value="Origen"   ajax="true" icon="ui-icon-pin-s" />
+                    <p:menuitem value="PuertoIngreso"   ajax="true" icon="ui-icon-pin-w" />
+                    <p:menuitem value="Historial de Localizacion"   ajax="true" icon="ui-icon-search" />
+                </p:submenu>
+                <p:separator />
+                <p:submenu label="Servicio">
+                    <p:menuitem value="Declaracion"   ajax="true" icon="ui-icon-clipboard" />
+                    <p:menuitem value="Factura"   ajax="true" icon="ui-icon-clipboard" />
+                </p:submenu>                                              
+            </p:panelMenu>
+        </h:form>
+
+        <p:spacer height="10"/>
+    </ui:define>
+
+</ui:composition>
+
