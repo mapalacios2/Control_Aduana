@@ -28,7 +28,6 @@ public class Operador implements Serializable{
     @Column(name = "COD_OPERADOR",nullable = false)       
     private String codigoOperador;
     
-
     @Column(name = "COD_TIPO_OPERADOR",nullable = false)       
     private String codigoTipoOperador;
     

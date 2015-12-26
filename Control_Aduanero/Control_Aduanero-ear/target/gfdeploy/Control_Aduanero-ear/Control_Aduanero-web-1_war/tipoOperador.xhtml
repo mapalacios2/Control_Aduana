@@ -9,10 +9,10 @@
     <ui:define name="contenido">
         
         <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Tipo Operador</font></h3>
-        <p:dataTable var="cliente" value="#{tipoOperadorBean.tipoOperadores}" scrollable="true" scrollHeight="150" style="width: 620px"
+        <p:dataTable var="tipoOperador" value="#{tipoOperadorBean.tipoOperadores}" scrollable="true" scrollHeight="150" style="width: 620px"
                      selectionMode="single" selection="#{tipoOperadorBean.toperadorSeleccionado}" rowKey="#{tipoOperador.codigoTipoOperador}" emptyMessage="No existen registros." >
 
-            <p:column filterBy="#{tipoOperador.codigoTipoOperador}" headerText="Cédula" filterMatchMode="contains" style="width: 80px;" >
+            <p:column filterBy="#{tipoOperador.codigoTipoOperador}" headerText="Codigo" filterMatchMode="contains" style="width: 80px;" >
                 <h:outputText value="#{tipoOperador.codigoTipoOperador}" />
             </p:column>
             <p:column filterBy="#{tipoOperador.descripcion}" headerText="Nombre" style="width: 150px;" filterMatchMode="contains" >
@@ -20,10 +20,10 @@
             </p:column>
         </p:dataTable>
         <h:panelGrid columns="5" style="width: 350px">
-            <p:commandButton value="Nuevo" actionListener="#{clienteBean.nuevoToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
-            <p:commandButton value="Modificar" actionListener="#{clienteBean.modificarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
-            <p:commandButton value="Detalles" actionListener="#{clienteBean.detallesToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
-            <p:commandButton value="Eliminar" actionListener="#{clienteBean.eliminarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Nuevo" actionListener="#{tipoOperadorBean.nuevoToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{tipoOperadorBean.modificarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{tipoOperadorBean.detallesToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{tipoOperadorBean.eliminarToperador()}" update="@form" rendered="#{not tipoOperadorBean.nuevo}"/>
         </h:panelGrid>
         <p:panel header="#{tipoOperadorBean.tituloFormulario}" style="width: 500px" rendered="#{tipoOperadorBean.enNueva || tipoOperadorBean.enModificar || tipoOperadorBean.enDetalles || tipoOperadorBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
@@ -33,7 +33,7 @@
                 <p:message for="codigo" />
                 <p:outputLabel for="descripcion" value="Descripcion:" />
                 <p:inputText id="descripcion" value="#{tipoOperadorBean.tipoOperador.descripcion}" style="width: 200px;" required="true" readonly="#{tipoOperadorBean.enDetalles}"/>
-                <p:message for="Descripcion" />
+                <p:message for="descripcion" />
             </p:panelGrid>
             <p:commandButton value="Guardar" actionListener="#{tipoOperadorBean.guardarToperador()}" rendered="#{not tipoOperadorBean.enDetalles}" update="@form"/>
             <p:commandButton value="Cancelar" actionListener="#{tipoOperadorBean.cancelar()}" immediate="true" update="@form"/>

@@ -19,32 +19,53 @@ and open the template in the editor.
         <panel>
             <f:view>
                 <div id="cabecera">
-                    <img src="#{facesContext.externalContext.requestContextPath}/images/header.jpg"/>
+                    <img src="#{facesContext.externalContext.requestContextPath}/images/aduana.gif"/>
                 </div>
                 <h:form>
                     <p:menubar>
-                        <p:menuitem value="Inicio" outcome="admin" icon="ui-icon-home"/>
-                        <p:menuitem value="Lista de Servicios"  icon="ui-icon-suitcase" />
-                        <p:menuitem value="Lista de Productos"  icon="ui-icon-circle-plus"/>
+                        <p:menuitem value="Inicio" icon="ui-icon-home" outcome="/principal"/>
+                        <p:menuitem value="Factura"  icon="ui-icon-suitcase" />
+                        <p:menuitem value="Declaracion"  icon="ui-icon-circle-plus"/>
                         <f:facet name="options">
-                            <p:button value="Cerrar Sesion" outcome="home" icon="ui-icon-key" />
+                            <p:button value="Cerrar Sesion" icon="ui-icon-key" />
                         </f:facet>
                     </p:menubar>
                 </h:form>
                 <div id="main">
                     <div id="menuLateral">
                         <h:form>
-                            <p:menu toggleable="true" style="width: 200px">
-                                <p:submenu label="Administrar">
-                                    <p:menuitem value="Alergias"  icon="ui-icon-notice" outcome="alergia"/>
-                                    <p:menuitem value="Citas"  icon="ui-icon-circle-plus" outcome="cita"/>                                
-                                    <p:menuitem value="Clientes"  icon="ui-icon-person" outcome="cliente"/>                                
-                                    <p:menuitem value="Facturación"  icon="ui-icon-print" outcome="facturacion"/>
-                                    <p:menuitem value="Fichas Médicas"  icon="ui-icon-folder-open" outcome="fichaMascota"/>  
-                                    <p:menuitem value="Medicamentos"  icon="ui-icon-pin-s" outcome="medicamento"/>
-                                    <p:menuitem value="Servicios"  icon="ui-icon-bullet" outcome="servicio"/>                                
-                                </p:submenu>            
-                            </p:menu>   
+
+                            <p:growl autoUpdate="true"/>
+                            <p:panelMenu style="width:auto; height: auto;">
+                                <p:submenu label="Inicio"> 
+                                    <p:menuitem value="Informacion"  icon="ui-icon-home" outcome="/principal" />                             
+
+                                </p:submenu>
+                                <p:submenu label="Gestionar">
+                                    <p:menuitem value="Tipo de Operadores" icon="ui-icon-person" outcome="/tipoOperador" />
+                                    <p:menuitem value="Operadores" icon="ui-icon-person" outcome="/operadores"/>
+                                    <p:menuitem value="Usuarios" icon="ui-icon-person" outcome="/usuario" />
+
+                                </p:submenu>
+                                <p:separator />
+                                <p:submenu label="Productos" > 
+                                    <p:menuitem value="Productos" icon="ui-icon-transferthick-e-w" />                             
+                                    <p:menuitem value="Partida" icon=" ui-icon-cart" />
+                                    <p:menuitem value="Subpartida" icon="ui-icon-suitcase" />
+                                </p:submenu>
+
+                                <p:separator />
+                                <p:submenu label="Localizacion">
+                                    <p:menuitem value="Origen" icon="ui-icon-pin-s" />
+                                    <p:menuitem value="PuertoIngreso" icon="ui-icon-pin-w" />
+                                    <p:menuitem value="Historial de Localizacion" icon="ui-icon-search" />
+                                </p:submenu>
+                                <p:separator />
+                                <p:submenu label="Servicio">
+                                    <p:menuitem value="Declaracion" icon="ui-icon-clipboard" />
+                                    <p:menuitem value="Factura" icon="ui-icon-clipboard" />
+                                </p:submenu>                                              
+                            </p:panelMenu>
                         </h:form>
                     </div>
                     <div id="contenido">  
@@ -56,7 +77,7 @@ and open the template in the editor.
                 </div>
                 <div id="pie">
                     <p:outputLabel style="font-size: small" value="Copyright &#169; 2015"/><br/>
-                    <p:outputLabel style="font-size: small" value="Contactos: mapalacios2@gmail.com"/><br/>
+                    <p:outputLabel style="font-size: small" value="Contactos: mapalacios235@gmail.com"/><br/>
                 </div>
             </f:view>
         </panel>

@@ -7,11 +7,15 @@ package ec.edu.espe.distribuidas.modelo.dao;
 
 import com.persist.common.dao.DefaultGenericDAOImple;
 import ec.edu.espe.distribuidas.modelo.Operador;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Marco Antonio
  */
+@LocalBean
+@Stateless 
 public class OperadorDAO extends DefaultGenericDAOImple<Operador, String>{
     
       public OperadorDAO() {

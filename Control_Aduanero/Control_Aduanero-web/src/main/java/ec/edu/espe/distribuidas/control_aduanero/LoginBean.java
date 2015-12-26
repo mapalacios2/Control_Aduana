@@ -7,6 +7,7 @@ package ec.edu.espe.distribuidas.control_aduanero;
 
 import ec.edu.espe.distribuidas.servicio.UsuarioServicio;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,7 +21,7 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean
 @ViewScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
     
     private String usuario;
     private String password;
@@ -28,18 +29,6 @@ public class LoginBean {
     @EJB
     private UsuarioServicio usuarioServicio;
     
-//    public void login() {
-//        RequestContext context = RequestContext.getCurrentInstance();
-//        FacesMessage msg;
-//        if (this.usuarioServicio.login(usuario, password)) {
-////            ((HttpServletRequest)context.getExternalContext().getRequest()).getSession().setAttribute("usuario", this.usuario);
-////            return "principal";
-//            System.out.println("Acceso correcto");
-//        } else {
-//            //return "index";
-//            System.out.println("Acceso incorrecto");
-//        }
-//    }
      public void login(ActionEvent actionEvent) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg;

@@ -51,6 +51,10 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaRegistro;
     
+    @JoinColumn(name = "COD_OPERADOR", referencedColumnName = "COD_OPERADOR", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Operador operador;
+    
 
     public String getCodigoUsuario() {
         return codigoUsuario;

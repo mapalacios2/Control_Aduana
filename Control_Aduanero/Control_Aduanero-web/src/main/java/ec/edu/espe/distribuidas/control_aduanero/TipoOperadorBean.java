@@ -46,12 +46,12 @@ public class TipoOperadorBean implements Serializable{
     public void nuevoToperador() {
         this.tipoOperador = new TipoOperador();
         this.enNueva =true;
-        this.tituloFormulario = "Creación de TipoOperador";
+        this.tituloFormulario = "Creación de Tipo Operador";
     }
     
     public void modificarToperador() {
         if (this.toperadorSeleccionado!=null) {
-            this.tituloFormulario = "Modificación de TipoOperador";
+            this.tituloFormulario = "Modificación de Tipo Operador";
             this.copiarToperadorSeleccionado();
             this.enModificar = true;
         }
@@ -60,7 +60,7 @@ public class TipoOperadorBean implements Serializable{
     
     public void detallesToperador() {
         if (this.toperadorSeleccionado!=null) {
-            this.tituloFormulario = "Detalles de TipoOperador";
+            this.tituloFormulario = "Detalles de Tipo Operador";
             this.copiarToperadorSeleccionado();
             this.enDetalles = true;
         }
@@ -72,7 +72,7 @@ public class TipoOperadorBean implements Serializable{
                 this.tOperadorServicio.crearToperador(this.tipoOperador);
                 this.enNueva = false;
                 this.tipoOperadores = this.tOperadorServicio.obtenerToperador();
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Creado.", "Se ha creado el "+this.tipoOperador);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Creado","");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } catch (Exception e) {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al crear Tipo Operador.", e.getMessage());
@@ -83,7 +83,7 @@ public class TipoOperadorBean implements Serializable{
                 this.tOperadorServicio.crearToperador(this.tipoOperador);
                 this.enModificar = false;
                 this.tipoOperadores = this.tOperadorServicio.obtenerToperador();
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Actualizado.", "Se ha actualizado el "+this.tipoOperador);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Actualizado","");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } catch (Exception e) {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al actualizar Tipo Operador.", e.getMessage());
@@ -98,7 +98,7 @@ public class TipoOperadorBean implements Serializable{
                 this.copiarToperadorSeleccionado();
                 this.tOperadorServicio.eliminarToperador(this.tipoOperador.getCodigoTipoOperador());
                 this.tipoOperadores = this.tOperadorServicio.obtenerToperador();
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Eliminado.", "Se ha eliminado el Tipo Operador " + this.tipoOperador);
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo Operador Eliminado","");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             } catch (Exception e) {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al eliminar Tipo Operador. ", e.getMessage());
@@ -134,7 +134,7 @@ public class TipoOperadorBean implements Serializable{
         return tipoOperador;
     }
 
-    public void setTipoOperador(TipoOperador tioOperador) {
+    public void setTipoOperador(TipoOperador tipoOperador) {
         this.tipoOperador = tipoOperador;
     }
     

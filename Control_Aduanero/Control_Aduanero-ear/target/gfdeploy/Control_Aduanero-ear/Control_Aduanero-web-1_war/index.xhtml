@@ -17,7 +17,7 @@
                 <p:outputLabel for="usuario" value="Usuario"/>
                 <p:inputText id="usuario" value="#{loginBean.usuario}"/>
                 <p:outputLabel for="pass" value="Contraseña"/>
-                <p:inputText id="pass" value="#{loginBean.password}"/>
+                <p:password id="pass" value="#{loginBean.password}"/>                
             </h:panelGrid>
             <br />
             <p:commandButton value="Iniciar Sesión" action="#{loginBean.login(actionEvent)}"
