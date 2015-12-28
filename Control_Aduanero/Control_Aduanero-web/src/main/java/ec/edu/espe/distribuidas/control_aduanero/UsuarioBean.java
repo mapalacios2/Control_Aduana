@@ -130,8 +130,8 @@ public class UsuarioBean implements Serializable {
         this.enDetalles = false;
     }
     
-    public void selectOperadorFromDialog(Operador operador) {
-        RequestContext.getCurrentInstance().closeDialog(operador);
+    public void selectUsuarioFromDialog(Usuario usuario) {
+        RequestContext.getCurrentInstance().closeDialog(usuario);
     }
 
     public List<Usuario> getUsuarios() {

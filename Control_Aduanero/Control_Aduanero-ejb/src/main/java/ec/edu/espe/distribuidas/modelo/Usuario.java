@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
     private String correoElectronico;
     
     @Column(name = "FECHA_REGISTRO",nullable = false)       
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
     
     @JoinColumn(name = "COD_OPERADOR", referencedColumnName = "COD_OPERADOR", insertable = false, updatable = false)

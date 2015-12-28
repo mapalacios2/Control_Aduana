@@ -59,7 +59,7 @@
                 <p:inputText id="clave" value="#{usuarioBean.usuario.clave}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
                 <p:message for="clave" />
                 <p:outputLabel for="fechaRegistro" value="Fecha Registro:" />
-                <p:inputText id="fechaRegistro" value="#{usuarioBean.usuario.fechaRegistro}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
+                <p:calendar id="fechaRegistro" value="#{usuarioBean.usuario.fechaRegistro}" pattern="MM/dd/yyyy HH:mm:ss" />
                 <p:message for="fechaRegistro" />
                 <p:outputLabel for="correoElectronico" value="Correo Electronico:" />
                 <p:inputText id="correoElectronico" value="#{usuarioBean.usuario.correoElectronico}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>

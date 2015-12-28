@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Origen</font></h3>
+        <p:dataTable var="origen" value="#{origenBean.origenes}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{origenBean.origenSeleccionado}" rowKey="#{origen.codigoOrigen}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{origen.codigoOrigen}" headerText="Codigo" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{origen.codigoOrigen}" />
+            </p:column>
+            <p:column filterBy="#{origen.pais}" headerText="Pais" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{origen.pais}" />
+            </p:column>
+            <p:column filterBy="#{origen.puerto}" headerText="Puerto" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{origen.puerto}" />
+            </p:column>
+            <p:column filterBy="#{origen.fechaEmbarque}" headerText="Fecha Embarque" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{origen.fechaEmbarque}" />
+            </p:column>    
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{origenBean.nuevoOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{origenBean.modificarOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{origenBean.detallesOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{origenBean.eliminarOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{origenBean.tituloFormulario}" style="width: 500px" rendered="#{origenBean.enNueva || origenBean.enModificar || origenBean.enDetalles || origenBean.nuevo}">
+            <p:panelGrid columns="3" style="width: 95%">
+
+                <p:outputLabel for="codigo" value="Codigo:" />
+                <p:inputText id="codigo" value="#{origenBean.origen.codigoOrigen}" style="width: 100px;" required="true" readonly="#{origenBean.enDetalles || origenBean.enModificar}"/>
+                <p:message for="codigo" />
+                <p:outputLabel for="pais" value="Pais:" />
+                <p:inputText id="pais" value="#{origenBean.origen.pais}" style="width: 200px;" required="true" readonly="#{origenBean.enDetalles}"/>
+                <p:message for="pais" />
+                <p:outputLabel for="puerto" value="Puerto:" />
+                <p:inputText id="puerto" value="#{origenBean.origen.puerto}" style="width: 200px;" required="true" readonly="#{origenBean.enDetalles}"/>
+                <p:message for="puerto" />
+                <p:outputLabel for="fechaEmbarque" value="Fecha Embarque:" />
+                <p:calendar id="fechaEmbarque" value="#{origenBean.origen.fechaEmbarque}" pattern="MM/dd/yyyy HH:mm:ss" />
+                <p:message for="fechaEmbarque" />
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{origenBean.guardarOrigen()}" rendered="#{not origenBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{origenBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

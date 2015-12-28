@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Puerto de Ingreso</font></h3>
+        <p:dataTable var="puerto" value="#{puertoIngresoBean.puertos}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{puertoIngresoBean.puertoSeleccionado}" rowKey="#{puerto.codigoPuerto}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{puerto.codigoPuerto}" headerText="Codigo" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{puerto.codigoPuerto}" />
+            </p:column>
+            <p:column filterBy="#{puerto.nombre}" headerText="Nombre" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{puerto.nombre}" />
+            </p:column>
+            <p:column filterBy="#{puerto.direccion}" headerText="Direccion" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{puerto.direccion}" />
+            </p:column>
+            <p:column filterBy="#{puerto.telefono}" headerText="Telefono" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{puerto.telefono}" />
+            </p:column>    
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{puertoIngresoBean.nuevoPuertoIngreso()}" update="@form" rendered="#{not puertoIngresoBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{puertoIngresoBean.modificarPuertoIngreso()}" update="@form" rendered="#{not puertoIngresoBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{puertoIngresoBean.detallesPuertoIngreso()}" update="@form" rendered="#{not puertoIngresoBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{puertoIngresoBean.eliminarPuertoIngreso()}" update="@form" rendered="#{not puertoIngresoBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{puertoIngresoBean.tituloFormulario}" style="width: 500px" rendered="#{puertoIngresoBean.enNueva || puertoIngresoBean.enModificar || puertoIngresoBean.enDetalles || puertoIngresoBean.nuevo}">
+            <p:panelGrid columns="3" style="width: 95%">
+
+                <p:outputLabel for="codigo" value="Codigo:" />
+                <p:inputText id="codigo" value="#{puertoIngresoBean.puerto.codigoPuerto}" style="width: 100px;" required="true" readonly="#{puertoIngresoBean.enDetalles || puertoIngresoBean.enModificar}"/>
+                <p:message for="codigo" />
+                <p:outputLabel for="nombre" value="Nombre:" />
+                <p:inputText id="nombre" value="#{puertoIngresoBean.puerto.nombre}" style="width: 200px;" required="true" readonly="#{puertoIngresoBean.enDetalles}"/>
+                <p:message for="nombre" />
+                <p:outputLabel for="direccion" value="Direccion: " />
+                <p:inputText id="direccion" value="#{puertoIngresoBean.puerto.direccion}" style="width: 200px;" required="true" readonly="#{puertoIngresoBean.enDetalles}"/>
+                <p:message for="direccion" />
+                <p:outputLabel for="telefono" value="Telefono:" />
+                <p:inputText id="telefono" value="#{puertoIngresoBean.puerto.telefono}" style="width: 200px;" required="true" readonly="#{puertoIngresoBean.enDetalles}"/>
+                <p:message for="telefono" />
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{puertoIngresoBean.guardarPuertoIngreso()}" rendered="#{not puertoIngresoBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{puertoIngresoBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>

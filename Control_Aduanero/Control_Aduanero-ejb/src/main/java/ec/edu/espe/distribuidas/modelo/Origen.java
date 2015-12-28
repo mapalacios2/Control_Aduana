@@ -34,7 +34,7 @@ public class Origen implements Serializable {
     private String puerto;
     
     @Column(name = "FECHA_EMBARQUE",nullable = false)       
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaEmbarque;
 
     public String getCodigoOrigen() {
