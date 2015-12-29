@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -26,8 +27,9 @@ import javax.persistence.Table;
 @Table(name = "DETALLE_FACTURA_02")
 public class DetalleFactura implements Serializable{
     
-    @Id    
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @SequenceGenerator(name = "DETALLE_FACTURA_02_SEQ", sequenceName = "DETALLE_FACTURA_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "DETALLE_FACTURA_02_SEQ")  
     @Column(name = "COD_DETALLE",nullable = false)       
     private Integer codigoDetalle;
     

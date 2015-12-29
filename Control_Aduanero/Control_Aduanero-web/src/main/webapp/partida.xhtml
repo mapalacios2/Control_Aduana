@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Partida</font></h3>
+        <p:dataTable var="partida" value="#{partidaBean.partidas}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{partidaBean.partidaSeleccionada}" rowKey="#{partida.codigoPartida}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{partida.codigoPartida}" headerText="Código" filterMatchMode="contains" style="width: 80px;" >
+                <h:outputText value="#{partida.codigoPartida}" />
+            </p:column>
+            <p:column filterBy="#{partida.desPartida}" headerText="Descripcion" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{partida.desPartida}" />
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{partidaBean.nuevaPartida()}" update="@form" rendered="#{not partidaBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{partidaBean.modificarPartida()}" update="@form" rendered="#{not partidaBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{partidaBean.detallesPartida()}" update="@form" rendered="#{not partidaBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{partidaBean.eliminarPartida()}" update="@form" rendered="#{not partidaBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{partidaBean.tituloFormulario}" style="width: 500px" rendered="#{partidaBean.enNueva || partidaBean.enModificar || partidaBean.enDetalles || partidaBean.nuevo}">
+            <p:panelGrid columns="3" style="width: 95%">
+
+                <p:outputLabel for="codigo" value="Codigo:" />
+                <p:inputText id="codigo" value="#{partidaBean.partida.codigoPartida}" style="width: 100px;" required="true" readonly="#{partidaBean.enDetalles || partidaBean.enModificar}"/>
+                <p:message for="codigo" />
+                <p:outputLabel for="descripcion" value="Descripcion:" />
+                <p:inputText id="descripcion" value="#{partidaBean.partida.desPartida}" style="width: 200px;" required="true" readonly="#{partidaBean.enDetalles}"/>
+                <p:message for="descripcion" />
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{partidaBean.guardarPartida()}" rendered="#{not partidaBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{partidaBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>

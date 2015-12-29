@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.distribuidas.servicio;
 
-import ec.edu.espe.distribuidas.modelo.Operador;
 import ec.edu.espe.distribuidas.modelo.Usuario;
 import ec.edu.espe.distribuidas.modelo.dao.UsuarioDAO;
 import java.util.List;
@@ -28,7 +27,7 @@ public class Usuario2Servicio {
     }
     
     public Usuario obtenerUsuarioPorCedula(String codigo) {
-        return this.UsuarioDAO.findById(codigo, false);
+        return this.UsuarioDAO.findById(codigo,false);
     }
     public List<Usuario> obtenerUsuario() {
         return this.UsuarioDAO.findAll();

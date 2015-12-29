@@ -34,9 +34,6 @@
         <p:panel header="#{puertoIngresoBean.tituloFormulario}" style="width: 500px" rendered="#{puertoIngresoBean.enNueva || puertoIngresoBean.enModificar || puertoIngresoBean.enDetalles || puertoIngresoBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
 
-                <p:outputLabel for="codigo" value="Codigo:" />
-                <p:inputText id="codigo" value="#{puertoIngresoBean.puerto.codigoPuerto}" style="width: 100px;" required="true" readonly="#{puertoIngresoBean.enDetalles || puertoIngresoBean.enModificar}"/>
-                <p:message for="codigo" />
                 <p:outputLabel for="nombre" value="Nombre:" />
                 <p:inputText id="nombre" value="#{puertoIngresoBean.puerto.nombre}" style="width: 200px;" required="true" readonly="#{puertoIngresoBean.enDetalles}"/>
                 <p:message for="nombre" />

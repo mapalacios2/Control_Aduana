@@ -7,13 +7,14 @@ package ec.edu.espe.distribuidas.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,16 +28,18 @@ import javax.persistence.TemporalType;
 
 
 public class Usuario implements Serializable {
-    
-    @Id    
+  
+    @Id 
+    @SequenceGenerator(name = "USUARIO_02_SEQ", sequenceName = "USUARIO_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "USUARIO_02_SEQ")
     @Column(name = "COD_USUARIO",nullable = false)       
     private String codigoUsuario;
      
-    @Column(name = "COD_OPERADOR",nullable = false)       
-    private String codigoOperador;
+    @Column(name = "COD_IMPORTADOR",nullable = false)       
+    private String codigoImportador;
     
-    @Column(name = "COD_TIPO_OPERADOR",nullable = false)       
-    private String codigoTipoOperador;
+    @Column(name = "TIPO_USUARIO",nullable = false)       
+    private String tipoUsuario;
     
     @Column(name = "NOMBRE",nullable = false)       
     private String nombre;
@@ -44,29 +47,30 @@ public class Usuario implements Serializable {
     @Column(name = "CLAVE",nullable = false) 
     private String clave;
     
-    @Column(name = "CORREO_ELECTRONICO",nullable = false) 
-    private String correoElectronico;
-    
     @Column(name = "FECHA_REGISTRO",nullable = false)       
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
     
-    @JoinColumn(name = "COD_OPERADOR", referencedColumnName = "COD_OPERADOR", insertable = false, updatable = false)
+    @JoinColumn(name = "COD_IMPORTADOR", referencedColumnName = "COD_IMPORTADOR", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Operador operador;
+    private Importador importador;
     
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
 
     public String getCodigoUsuario() {
         return codigoUsuario;
     }
 
-    public String getCodigoOperador() {
-        return codigoOperador;
+    public String getCodigoImportador() {
+        return codigoImportador;
     }
 
-    public String getCodigoTipoOperador() {
-        return codigoTipoOperador;
-    }
 
     public String getNombre() {
         return nombre;
@@ -76,25 +80,22 @@ public class Usuario implements Serializable {
         return clave;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
     public Date getFechaRegistro() {
         return fechaRegistro;
+    }
+
+    public Importador getImportador() {
+        return importador;
     }
 
     public void setCodigoUsuario(String codigoUsuario) {
         this.codigoUsuario = codigoUsuario;
     }
 
-    public void setCodigoOperador(String codigoOperador) {
-        this.codigoOperador = codigoOperador;
+    public void setCodigoImportador(String codigoImportador) {
+        this.codigoImportador = codigoImportador;
     }
 
-    public void setCodigoTipoOperador(String codigoTipoOperador) {
-        this.codigoTipoOperador = codigoTipoOperador;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -104,20 +105,18 @@ public class Usuario implements Serializable {
         this.clave = clave;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public void setImportador(Importador importador) {
+        this.importador = importador;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.codigoUsuario);
-        hash = 59 * hash + Objects.hashCode(this.codigoOperador);
-        hash = 59 * hash + Objects.hashCode(this.codigoTipoOperador);
+        int hash = 3;
+        hash = 59 * hash + (this.codigoUsuario != null ? this.codigoUsuario.hashCode() : 0);
         return hash;
     }
 
@@ -133,13 +132,7 @@ public class Usuario implements Serializable {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.codigoUsuario, other.codigoUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.codigoOperador, other.codigoOperador)) {
-            return false;
-        }
-        if (!Objects.equals(this.codigoTipoOperador, other.codigoTipoOperador)) {
+        if ((this.codigoUsuario == null) ? (other.codigoUsuario != null) : !this.codigoUsuario.equals(other.codigoUsuario)) {
             return false;
         }
         return true;
@@ -147,8 +140,9 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "codigoUsuario=" + codigoUsuario + ", codigoOperador=" + codigoOperador + ", codigoTipoOperador=" + codigoTipoOperador + ", nombre=" + nombre + ", clave=" + clave + ", correoElectronico=" + correoElectronico + ", fechaRegistro=" + fechaRegistro + '}';
-    }   
-    
+        return "Usuario{" + "codigoUsuario=" + codigoUsuario + ", codigoImportador=" + codigoImportador + ", TipoUsuario=" + tipoUsuario + ", nombre=" + nombre + ", clave=" + clave + ", fechaRegistro=" + fechaRegistro + ", importador=" + importador + '}';
+    }
+
+  
     
 }

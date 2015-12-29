@@ -6,7 +6,7 @@
 package ec.edu.espe.distribuidas.modelo.dao;
 
 import com.persist.common.dao.DefaultGenericDAOImple;
-import ec.edu.espe.distribuidas.modelo.Operador;
+import ec.edu.espe.distribuidas.modelo.Importador;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -16,10 +16,10 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless 
-public class OperadorDAO extends DefaultGenericDAOImple<Operador, String>{
+public class OperadorDAO extends DefaultGenericDAOImple<Importador, String>{
     
       public OperadorDAO() {
-        super(Operador.class);
+        super(Importador.class);
     }
     
 

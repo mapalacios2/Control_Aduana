@@ -5,8 +5,7 @@
  */
 package ec.edu.espe.distribuidas.servicio;
 
-import ec.edu.espe.distribuidas.modelo.Operador;
-import ec.edu.espe.distribuidas.modelo.TipoOperador;
+import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.dao.OperadorDAO;
 import java.util.List;
 import javax.ejb.EJB;
@@ -23,24 +22,24 @@ public class OperadorServicio {
    @EJB
    OperadorDAO OperadorDAO;
     
-    public void crearOperador(Operador operador) {
+    public void crearOperador(Importador operador) {
         this.OperadorDAO.insert(operador);
     }
     
-    public Operador obtenerOperadorPorCedula(String codigo) {
+    public Importador obtenerOperadorPorCedula(String codigo) {
         return this.OperadorDAO.findById(codigo, false);
     }
-    public List<Operador> obtenerOperador() {
+    public List<Importador> obtenerOperador() {
         return this.OperadorDAO.findAll();
     }
     
-    public void actualizarOperador(Operador operador) {
+    public void actualizarOperador(Importador operador) {
         this.OperadorDAO.update(operador);        
     }
     
     
     public void eliminarOperador(String codigo) {
-        Operador operador = this.OperadorDAO.findById(codigo, false);
+        Importador operador = this.OperadorDAO.findById(codigo, false);
         this.OperadorDAO.remove(operador);
     }
 }

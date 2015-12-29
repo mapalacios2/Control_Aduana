@@ -13,8 +13,7 @@
             </p:galleria>
         </p:panel> 
     </ui:define>
-
-
+    
     <ui:define name="menuLateral">  
 
         <p:spacer height="10"/>
@@ -27,29 +26,32 @@
 
                 </p:submenu>
                 <p:submenu label="Gestionar">
-                    <p:menuitem value="Tipo de Operadores" icon="ui-icon-person" outcome="/tipoOperador" />
-                    <p:menuitem value="Operadores" icon="ui-icon-person" outcome="/operadores"/>
+                    <p:menuitem value="Importadores" icon="ui-icon-person" outcome="/importador"/>
                     <p:menuitem value="Usuarios" icon="ui-icon-person" outcome="/usuario"/>
 
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Productos" > 
-                    <p:menuitem value="Productos" icon="ui-icon-transferthick-e-w" />                             
-                    <p:menuitem value="Partida" icon=" ui-icon-cart" />
-                    <p:menuitem value="Subpartida" icon="ui-icon-suitcase" />
+                    <p:menuitem value="Productos" icon="ui-icon-transferthick-e-w" outcome="/Producto"/>                             
+                    <p:menuitem value="Partida" icon=" ui-icon-cart" outcome="/partida"/>
+                    <p:menuitem value="Subpartida" icon="ui-icon-suitcase" outcome="/Subpartida"/>
                 </p:submenu>
 
                 <p:separator />
                 <p:submenu label="Localizacion">
                     <p:menuitem value="Origen" icon="ui-icon-pin-s" outcome="/origen" />
                     <p:menuitem value="Puerto de Ingreso" icon="ui-icon-pin-w" outcome="/puerto" />
-                    <p:menuitem value="Historial de Localizacion" icon="ui-icon-search" />
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Servicio">
                     <p:menuitem value="Declaracion" icon="ui-icon-clipboard" />
                     <p:menuitem value="Factura" icon="ui-icon-clipboard" />
-                </p:submenu>                                              
+                </p:submenu>   
+                <p:submenu label="Reportes">
+                    <p:menuitem value="Dinero recaudado por dia" icon="ui-icon-clipboard" />
+                    <p:menuitem value="Productos que mas se importan" icon="ui-icon-clipboard" />
+                    <p:menuitem value="Evolución de montos por mes" icon="ui-icon-clipboard" />
+                </p:submenu>  
             </p:panelMenu>
         </h:form>
 

@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
-import ec.edu.espe.distribuidas.modelo.Operador;
+import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.Origen;
 import ec.edu.espe.distribuidas.servicio.OrigenServicio;
 import java.io.Serializable;

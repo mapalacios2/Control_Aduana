@@ -9,7 +9,10 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +24,9 @@ import javax.persistence.Table;
 public class PuertoIngreso implements Serializable{
     
      
-    @Id    
+    @Id 
+    @SequenceGenerator(name = "PUERTO_INGRESO_02_SEQ", sequenceName = "PUERTO_INGRESO_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "PUERTO_INGRESO_02_SEQ")    
     @Column(name = "COD_PUERTO",nullable = false)       
     private String codigoPuerto;
     

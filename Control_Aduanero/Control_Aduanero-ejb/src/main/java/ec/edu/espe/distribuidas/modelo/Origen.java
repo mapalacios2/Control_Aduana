@@ -10,7 +10,10 @@ import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +26,9 @@ import javax.persistence.TemporalType;
 @Table(name = "ORIGEN_02")
 public class Origen implements Serializable {
     
-    @Id    
+    @Id 
+    @SequenceGenerator(name = "ORIGEN_02_SEQ", sequenceName = "ORIGEN_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "ORIGEN_02_SEQ")      
     @Column(name = "COD_ORIGEN",nullable = false)       
     private String codigoOrigen;
     

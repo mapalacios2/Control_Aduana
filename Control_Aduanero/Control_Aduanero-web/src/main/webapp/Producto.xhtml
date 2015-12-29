@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Producto</font></h3>
+        <p:dataTable var="producto" value="#{productoBean.productos}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{productoBean.productoSeleccionado}" rowKey="#{producto.codigoProducto}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{producto.codigoProducto}" headerText="Código" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{producto.codigoProducto}" />
+            </p:column>
+            <p:column filterBy="#{producto.codigoSubpartida}" headerText="Subpartida" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{producto.codigoSubpartida}" />
+            </p:column>
+            <p:column filterBy="#{producto.descripcion}" headerText="Descripcion" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{producto.descripcion}" />
+            </p:column>
+            <p:column filterBy="#{producto.valorProducto}" headerText="Valor" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{producto.valorProducto}" />
+            </p:column>
+            <p:column filterBy="#{producto.valorArancel}" headerText="Arancel" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{producto.valorArancel}" />
+            </p:column>
+            <p:column filterBy="#{producto.porcentajeArancel}" headerText="Porcentaje" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{producto.porcentajeArancel}" />
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{productoBean.nuevoProducto()}" update="@form" rendered="#{not productoBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{productoBean.modificarProducto()}" update="@form" rendered="#{not productoBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{productoBean.detallesProducto()}" update="@form" rendered="#{not productoBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{productoBean.eliminarProducto()}" update="@form" rendered="#{not productoBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{productoBean.tituloFormulario}" style="width: 500px" rendered="#{productoBean.enNueva || productoBean.enModificar || productoBean.enDetalles || productoBean.nuevo}">
+            <p:panelGrid columns="3" style="width: 95%">
+
+                <p:outputLabel for="subpartida" value="Subpartida:" />
+                <p:inputText id="subpartida" value="#{productoBean.producto.codigoSubpartida}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
+                <p:message for="subpartida" />
+                <p:outputLabel for="descripcion" value="Descripcion:" />
+                <p:inputText id="descripcion" value="#{productoBean.producto.descripcion}" style="width: 200px;" required="true" readonly="#{productoBean.enDetalles}"/>
+                <p:message for="descripcion" />
+                <p:outputLabel for="valorProducto" value="Valor" />
+                <p:inputText id="valorProducto" value="#{productoBean.producto.valorProducto}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
+                <p:message for="valorProducto" />
+                <p:outputLabel for="valorArancel" value="Arancel:" />
+                <p:inputText id="valorArancel" value="#{productoBean.producto.valorArancel}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
+                <p:message for="valorArancel" />
+                <p:outputLabel for="porcentajeArancel" value="Arancel:" />
+                <p:inputText id="porcentajeArancel" value="#{productoBean.producto.porcentajeArancel}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
+                <p:message for="porcentajeArancel" />
+                
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{productoBean.guardarProducto()}" rendered="#{not productoBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{productoBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>

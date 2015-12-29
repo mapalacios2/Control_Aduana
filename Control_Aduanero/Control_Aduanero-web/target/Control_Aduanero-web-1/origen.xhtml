@@ -34,9 +34,6 @@
         <p:panel header="#{origenBean.tituloFormulario}" style="width: 500px" rendered="#{origenBean.enNueva || origenBean.enModificar || origenBean.enDetalles || origenBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
 
-                <p:outputLabel for="codigo" value="Codigo:" />
-                <p:inputText id="codigo" value="#{origenBean.origen.codigoOrigen}" style="width: 100px;" required="true" readonly="#{origenBean.enDetalles || origenBean.enModificar}"/>
-                <p:message for="codigo" />
                 <p:outputLabel for="pais" value="Pais:" />
                 <p:inputText id="pais" value="#{origenBean.origen.pais}" style="width: 200px;" required="true" readonly="#{origenBean.enDetalles}"/>
                 <p:message for="pais" />

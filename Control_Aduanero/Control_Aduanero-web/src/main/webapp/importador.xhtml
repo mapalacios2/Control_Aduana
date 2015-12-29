@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/plantillaUsuario.xhtml">    
+
+    <ui:define name="contenido">
+        
+        <h3 style="margin-top:0"><font color= "#ffffff">Gestion de  Importadores</font></h3>
+        <p:dataTable var="operador" value="#{importadorBean.operadores}" scrollable="true" scrollHeight="150" style="width: 620px"
+                     selectionMode="single" selection="#{importadorBean.operadorSeleccionado}" rowKey="#{operador.codigoImportador}" emptyMessage="No existen registros." >
+
+            <p:column filterBy="#{operador.codigoImportador}" headerText="Codigo" filterMatchMode="contains" style="width: 150px;" >
+                <h:outputText value="#{operador.codigoImportador}" />
+            </p:column>
+            <p:column filterBy="#{operador.nombre}" headerText="Nombre" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{operador.nombre}" />
+            </p:column>
+            <p:column filterBy="#{operador.identificacion}" headerText="Identificacion" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{operador.identificacion}" />
+            </p:column>
+             <p:column filterBy="#{operador.direccion}" headerText="Direccion" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{operador.direccion}" />
+            </p:column>
+             <p:column filterBy="#{operador.telefono}" headerText="Telefono" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{operador.telefono}" />
+            </p:column>
+            <p:column filterBy="#{operador.correoElectronico}" headerText="Correo Electronico" style="width: 150px;" filterMatchMode="contains" >
+                <h:outputText value="#{operador.correoElectronico}" />
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid columns="5" style="width: 350px">
+            <p:commandButton value="Nuevo" actionListener="#{importadorBean.nuevoOperador()}" update="@form" rendered="#{not importadorBean.nuevo}"/>
+            <p:commandButton value="Modificar" actionListener="#{importadorBean.modificarOperador()}" update="@form" rendered="#{not importadorBean.nuevo}"/>
+            <p:commandButton value="Detalles" actionListener="#{importadorBean.detallesOperador()}" update="@form" rendered="#{not importadorBean.nuevo}"/>
+            <p:commandButton value="Eliminar" actionListener="#{importadorBean.eliminarOperador()}" update="@form" rendered="#{not importadorBean.nuevo}"/>
+        </h:panelGrid>
+        <p:panel header="#{importadorBean.tituloFormulario}" style="width: 500px" rendered="#{importadorBean.enNueva || importadorBean.enModificar || importadorBean.enDetalles || importadorBean.nuevo}">
+            <p:panelGrid columns="6" style="width: 95%">
+
+                <p:outputLabel for="nombre" value="Nombre:" />
+                <p:inputText id="nombre" value="#{importadorBean.operador.nombre}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="nombre" />
+                <p:outputLabel for="identificacion" value="Identificacion:" />
+                <p:inputText id="identificacion" value="#{importadorBean.operador.identificacion}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="identificacion" />
+                <p:outputLabel for="direccion" value="Direccion:" />
+                <p:inputText id="direccion" value="#{importadorBean.operador.direccion}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="direccion" />
+                <p:outputLabel for="telefono" value="Telefono:" />
+                <p:inputText id="telefono" value="#{importadorBean.operador.telefono}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="telefono" />
+                <p:outputLabel for="correoElectronico" value="Correo Electronico:" />
+                <p:inputText id="correoElectronico" value="#{importadorBean.operador.correoElectronico}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="correoElectronico" />
+            </p:panelGrid>
+            <p:commandButton value="Guardar" actionListener="#{importadorBean.guardarOperador()}" rendered="#{not importadorBean.enDetalles}" update="@form"/>
+            <p:commandButton value="Cancelar" actionListener="#{importadorBean.cancelar()}" immediate="true" update="@form"/>
+        </p:panel>
+    </ui:define>
+</ui:composition>

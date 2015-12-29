@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
-import ec.edu.espe.distribuidas.modelo.Operador;
 import ec.edu.espe.distribuidas.modelo.Usuario;
 import ec.edu.espe.distribuidas.servicio.Usuario2Servicio;
 import java.io.Serializable;
@@ -28,7 +27,7 @@ public class UsuarioBean implements Serializable {
     private List<Usuario> Usuarios;
     
     private Usuario usuario;
-    
+
     private Usuario UsuarioSeleccionado;
     
     private String tituloFormulario;
@@ -115,12 +114,11 @@ public class UsuarioBean implements Serializable {
      private void copiarUsuarioSeleccionado() {
         this.usuario= new Usuario();
         this.usuario.setCodigoUsuario(this.UsuarioSeleccionado.getCodigoUsuario());
-        this.usuario.setCodigoOperador(this.UsuarioSeleccionado.getCodigoOperador());
-        this.usuario.setCodigoTipoOperador(this.UsuarioSeleccionado.getCodigoTipoOperador());        
+        this.usuario.setCodigoImportador(this.UsuarioSeleccionado.getCodigoImportador());
+        this.usuario.setTipoUsuario(this.UsuarioSeleccionado.getTipoUsuario());        
         this.usuario.setNombre(this.UsuarioSeleccionado.getNombre());
         this.usuario.setClave(this.UsuarioSeleccionado.getClave());
         this.usuario.setFechaRegistro(this.UsuarioSeleccionado.getFechaRegistro());
-        this.usuario.setCorreoElectronico(this.UsuarioSeleccionado.getCorreoElectronico());
         
     }
      

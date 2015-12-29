@@ -10,9 +10,12 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -23,18 +26,14 @@ import javax.persistence.Table;
 @Table(name = "PRODUCTO_02")
 public class Producto implements Serializable{
     
-    @Id    
+    @Id 
+    @SequenceGenerator(name = "PRODUCTO_02_SEQ", sequenceName = "PRODUCTO_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "PRODUCTO_02_SEQ")     
     @Column(name = "COD_PRODUCTO",nullable = false)       
     private String codigoProducto;
     
-    @Column(name = "COD_ARANCEL",nullable = false)       
-    private String codigoArancel;
-    
     @Column(name = "COD_SUBPARTIDA",nullable = false)       
     private String codigoSubpartida ;
-    
-    @Column(name = "COD_PARTIDA",nullable = false)       
-    private String codigoPartida;
     
     @Column(name = "DESCRIPCION",nullable = false)       
     private String descripcion;
@@ -56,16 +55,8 @@ public class Producto implements Serializable{
         return codigoProducto;
     }
 
-    public String getCodigoArancel() {
-        return codigoArancel;
-    }
-
     public String getCodigoSubpartida() {
         return codigoSubpartida;
-    }
-
-    public String getCodigoPartida() {
-        return codigoPartida;
     }
 
     public String getDescripcion() {
@@ -88,16 +79,8 @@ public class Producto implements Serializable{
         this.codigoProducto = codigoProducto;
     }
 
-    public void setCodigoArancel(String codigoArancel) {
-        this.codigoArancel = codigoArancel;
-    }
-
     public void setCodigoSubpartida(String codigoSubpartida) {
         this.codigoSubpartida = codigoSubpartida;
-    }
-
-    public void setCodigoPartida(String codigoPartida) {
-        this.codigoPartida = codigoPartida;
     }
 
     public void setDescripcion(String descripcion) {
@@ -143,7 +126,7 @@ public class Producto implements Serializable{
 
     @Override
     public String toString() {
-        return "Producto{" + "codigoProducto=" + codigoProducto + ", codigoArancel=" + codigoArancel + ", codigoSubpartida=" + codigoSubpartida + ", codigoPartida=" + codigoPartida + ", descripcion=" + descripcion + ", valorProducto=" + valorProducto + ", valorArancel=" + valorArancel + ", porcentajeArancel=" + porcentajeArancel + '}';
+        return "Producto{" + "codigoProducto=" + codigoProducto + ", codigoSubpartida=" + codigoSubpartida + ", descripcion=" + descripcion + ", valorProducto=" + valorProducto + ", valorArancel=" + valorArancel + ", porcentajeArancel=" + porcentajeArancel + '}';
     }
     
     
