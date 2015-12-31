@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless
-public class DetalleFacturaDAO extends DefaultGenericDAOImple<DetalleFactura, Integer>{
+public class DetalleFacturaDAO extends DefaultGenericDAOImple<DetalleFactura, String>{
     
       public DetalleFacturaDAO() {
         super(DetalleFactura.class);

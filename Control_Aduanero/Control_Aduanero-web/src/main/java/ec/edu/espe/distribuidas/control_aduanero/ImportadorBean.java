@@ -6,7 +6,7 @@
 package ec.edu.espe.distribuidas.control_aduanero;
 
 import ec.edu.espe.distribuidas.modelo.Importador;
-import ec.edu.espe.distribuidas.servicio.OperadorServicio;
+import ec.edu.espe.distribuidas.servicio.ImportadorServicio;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -39,7 +39,7 @@ public class ImportadorBean implements Serializable {
     private boolean enDetalles;
     
     @EJB
-    private OperadorServicio OperadorServicio;
+    private ImportadorServicio OperadorServicio;
     
     @PostConstruct
     public void postConstructor() {
@@ -164,7 +164,7 @@ public class ImportadorBean implements Serializable {
         return enDetalles;
     }
 
-    public OperadorServicio getOperadorServicio() {
+    public ImportadorServicio getOperadorServicio() {
         return OperadorServicio;
     }
 
@@ -200,7 +200,7 @@ public class ImportadorBean implements Serializable {
         this.enDetalles = enDetalles;
     }
 
-    public void setOperadorServicio(OperadorServicio OperadorServicio) {
+    public void setOperadorServicio(ImportadorServicio OperadorServicio) {
         this.OperadorServicio = OperadorServicio;
     }
 

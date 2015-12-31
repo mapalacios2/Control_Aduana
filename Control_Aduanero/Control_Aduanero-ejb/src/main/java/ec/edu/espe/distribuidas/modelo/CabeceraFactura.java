@@ -31,16 +31,13 @@ public class CabeceraFactura implements Serializable {
     @SequenceGenerator(name = "CABECERA_FACTURA_02_SEQ", sequenceName = "CABECERA_FACTURA_02_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "CABECERA_FACTURA_02_SEQ")      
     @Column(name = "COD_FACTURA",nullable = false)       
-    private Integer codigoFactura;
+    private String codigoFactura;
     
     @Column(name = "COD_DETALLE",nullable = false)       
     private Integer codigoDetalle;
     
     @Column(name = "IDENTIFICACION",nullable = false)       
     private String identificacion;
-    
-    @Column(name = "NOMBRE",nullable = false)       
-    private String nombre;
     
     @Column(name = "FECHA_EMISION",nullable = false)       
     @Temporal(TemporalType.DATE)
@@ -49,7 +46,7 @@ public class CabeceraFactura implements Serializable {
     @Column(name = "TOTAL_FACTURA",nullable = false) 
     private BigDecimal totalFactura;
 
-    public Integer getCodigoFactura() {
+    public String getCodigoFactura() {
         return codigoFactura;
     }
 
@@ -61,10 +58,6 @@ public class CabeceraFactura implements Serializable {
         return identificacion;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public Date getFechaEmision() {
         return fechaEmision;
     }
@@ -73,7 +66,7 @@ public class CabeceraFactura implements Serializable {
         return totalFactura;
     }
 
-    public void setCodigoFactura(Integer codigoFactura) {
+    public void setCodigoFactura(String codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
 
@@ -85,9 +78,6 @@ public class CabeceraFactura implements Serializable {
         this.identificacion = identificacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public void setFechaEmision(Date fechaEmision) {
         this.fechaEmision = fechaEmision;
@@ -124,7 +114,7 @@ public class CabeceraFactura implements Serializable {
 
     @Override
     public String toString() {
-        return "CabeceraFactura{" + "codigoFactura=" + codigoFactura + ", codigoDetalle=" + codigoDetalle + ", identificacion=" + identificacion + ", nombre=" + nombre + ", fechaEmision=" + fechaEmision + ", totalFactura=" + totalFactura + '}';
+        return "CabeceraFactura{" + "codigoFactura=" + codigoFactura + ", codigoDetalle=" + codigoDetalle + ", identificacion=" + identificacion + ", fechaEmision=" + fechaEmision + ", totalFactura=" + totalFactura + '}';
     }
    
     

@@ -16,9 +16,9 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless 
-public class OperadorDAO extends DefaultGenericDAOImple<Importador, String>{
+public class ImportadorDAO extends DefaultGenericDAOImple<Importador, String>{
     
-      public OperadorDAO() {
+      public ImportadorDAO() {
         super(Importador.class);
     }
     

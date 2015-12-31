@@ -8,7 +8,6 @@ package ec.edu.espe.distribuidas.modelo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,10 +29,10 @@ import javax.persistence.TemporalType;
 public class Declaracion implements Serializable{
     
     @Id 
-    @SequenceGenerator(name = "DELCARACION_02_SEQ", sequenceName = "DELCARACION_02_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "DELCARACION_02_SEQ")    
+    @SequenceGenerator(name = "DECLARACION_02_SEQ", sequenceName = "DECLARACION_02_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "DECLARACION_02_SEQ")    
     @Column(name = "COD_DECLARACION",nullable = false)       
-    private Integer codigoDeclaracion;
+    private String codigoDeclaracion;
     
     @Column(name = "COD_IMPORTADOR",nullable = false)       
     private String codigoImportador;
@@ -47,14 +46,11 @@ public class Declaracion implements Serializable{
     @Column(name = "COD_PRODUCTO",nullable = false)       
     private String codigoProducto;
     
-    @Column(name = "COD_DETALLE",nullable = false)       
-    private Integer codigoDetalle;
-    
     @Column(name = "CAN_PRODUCTO",nullable = false) 
     private Integer cantidadProducto;
     
     @Column(name = "FECHA_LLEGADA",nullable = false) 
-     @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaLlegada;
     
     @Column(name = "TOTAL_PRODUCTO",nullable = false) 
@@ -79,7 +75,7 @@ public class Declaracion implements Serializable{
     @ManyToOne(optional = false)
     private Importador importador;
 
-    public Integer getCodigoDeclaracion() {
+    public String getCodigoDeclaracion() {
         return codigoDeclaracion;
     }
 
@@ -99,9 +95,6 @@ public class Declaracion implements Serializable{
         return codigoProducto;
     }
 
-    public Integer getCodigoDetalle() {
-        return codigoDetalle;
-    }
 
     public Integer getCantidadProducto() {
         return cantidadProducto;
@@ -135,7 +128,7 @@ public class Declaracion implements Serializable{
         return importador;
     }
 
-    public void setCodigoDeclaracion(Integer codigoDeclaracion) {
+    public void setCodigoDeclaracion(String codigoDeclaracion) {
         this.codigoDeclaracion = codigoDeclaracion;
     }
 
@@ -155,9 +148,6 @@ public class Declaracion implements Serializable{
         this.codigoProducto = codigoProducto;
     }
 
-    public void setCodigoDetalle(Integer codigoDetalle) {
-        this.codigoDetalle = codigoDetalle;
-    }
 
     public void setCantidadProducto(Integer cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
@@ -218,7 +208,7 @@ public class Declaracion implements Serializable{
 
     @Override
     public String toString() {
-        return "Declaracion{" + "codigoDeclaracion=" + codigoDeclaracion + ", codigoImportador=" + codigoImportador + ", codigoOrigen=" + codigoOrigen + ", codigoPuerto=" + codigoPuerto + ", codigoProducto=" + codigoProducto + ", codigoDetalle=" + codigoDetalle + ", cantidadProducto=" + cantidadProducto + ", fechaLlegada=" + fechaLlegada + ", totalProducto=" + totalProducto + ", totalArancel=" + totalArancel + ", origen=" + origen + ", puertoIngreso=" + puertoIngreso + ", producto=" + producto + ", importador=" + importador + '}';
+        return "Declaracion{" + "codigoDeclaracion=" + codigoDeclaracion + ", codigoImportador=" + codigoImportador + ", codigoOrigen=" + codigoOrigen + ", codigoPuerto=" + codigoPuerto + ", codigoProducto=" + codigoProducto + ", cantidadProducto=" + cantidadProducto + ", fechaLlegada=" + fechaLlegada + ", totalProducto=" + totalProducto + ", totalArancel=" + totalArancel + ", origen=" + origen + ", puertoIngreso=" + puertoIngreso + ", producto=" + producto + ", importador=" + importador + '}';
     }
 
     

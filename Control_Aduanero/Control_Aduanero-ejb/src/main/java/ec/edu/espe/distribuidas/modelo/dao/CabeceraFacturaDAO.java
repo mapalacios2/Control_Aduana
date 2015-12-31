@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless 
-public class CabeceraFacturaDAO extends DefaultGenericDAOImple<CabeceraFactura, Integer>{
+public class CabeceraFacturaDAO extends DefaultGenericDAOImple<CabeceraFactura, String>{
     
       public CabeceraFacturaDAO() {
         super(CabeceraFactura.class);

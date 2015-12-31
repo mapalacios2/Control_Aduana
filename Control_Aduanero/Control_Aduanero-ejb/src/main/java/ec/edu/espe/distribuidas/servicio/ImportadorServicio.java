@@ -6,7 +6,7 @@
 package ec.edu.espe.distribuidas.servicio;
 
 import ec.edu.espe.distribuidas.modelo.Importador;
-import ec.edu.espe.distribuidas.modelo.dao.OperadorDAO;
+import ec.edu.espe.distribuidas.modelo.dao.ImportadorDAO;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -18,9 +18,9 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless
-public class OperadorServicio {
+public class ImportadorServicio {
    @EJB
-   OperadorDAO OperadorDAO;
+   ImportadorDAO OperadorDAO;
     
     public void crearOperador(Importador operador) {
         this.OperadorDAO.insert(operador);

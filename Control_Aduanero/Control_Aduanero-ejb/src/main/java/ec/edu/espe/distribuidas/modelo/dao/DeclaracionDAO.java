@@ -16,11 +16,10 @@ import javax.ejb.Stateless;
  */
 @LocalBean
 @Stateless
-public class DeclaracionDAO extends DefaultGenericDAOImple<Declaracion, Integer>{
+public class DeclaracionDAO extends DefaultGenericDAOImple<Declaracion, String>{
     
       public DeclaracionDAO() {
         super(Declaracion.class);
-    }
-    
+    } 
 
 }

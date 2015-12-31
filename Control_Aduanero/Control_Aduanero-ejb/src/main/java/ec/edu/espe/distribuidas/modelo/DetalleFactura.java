@@ -31,13 +31,16 @@ public class DetalleFactura implements Serializable{
     @SequenceGenerator(name = "DETALLE_FACTURA_02_SEQ", sequenceName = "DETALLE_FACTURA_02_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "DETALLE_FACTURA_02_SEQ")  
     @Column(name = "COD_DETALLE",nullable = false)       
-    private Integer codigoDetalle;
+    private String codigoDetalle;
     
     @Column(name = "COD_DECLARACION",nullable = false)       
     private Integer codigoDeclaracion;
     
     @Column(name = "COD_FACTURA",nullable = false)       
     private String codigoFactura;
+    
+    @Column(name = "IVA",nullable = false)       
+    private BigDecimal iva;
     
     @Column(name = "TOTAL",nullable = false)       
     private BigDecimal total;
@@ -50,7 +53,7 @@ public class DetalleFactura implements Serializable{
     @ManyToOne(optional = false)
     private CabeceraFactura cabeceraFactura;
 
-    public Integer getCodigoDetalle() {
+    public String getCodigoDetalle() {
         return codigoDetalle;
     }
 
@@ -66,7 +69,7 @@ public class DetalleFactura implements Serializable{
         return total;
     }
 
-    public void setCodigoDetalle(Integer codigoDetalle) {
+    public void setCodigoDetalle(String codigoDetalle) {
         this.codigoDetalle = codigoDetalle;
     }
 
