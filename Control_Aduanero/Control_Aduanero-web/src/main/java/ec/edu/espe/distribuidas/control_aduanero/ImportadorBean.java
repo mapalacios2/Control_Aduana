@@ -83,7 +83,7 @@ public class ImportadorBean implements Serializable {
             }
         } else {
             try {
-                this.OperadorServicio.crearOperador(this.operador);
+                this.OperadorServicio.actualizarOperador(this.operador);
                 this.enModificar = false;
                 this.Operadores = this.OperadorServicio.obtenerOperador();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Importador Actualizado","");

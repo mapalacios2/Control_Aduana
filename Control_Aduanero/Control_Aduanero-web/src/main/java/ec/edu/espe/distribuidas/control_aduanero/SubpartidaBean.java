@@ -84,7 +84,7 @@ public class SubpartidaBean implements Serializable{
             }
         } else {
             try {
-                this.subpartidaServicio.crearSubpartida(this.subpartida);
+                this.subpartidaServicio.actualizarSubpartida(this.subpartida);
                 this.enModificar = false;
                 this.Subpartidas = this.subpartidaServicio.obtenerSubpartida();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Subpartida Actualizada","");

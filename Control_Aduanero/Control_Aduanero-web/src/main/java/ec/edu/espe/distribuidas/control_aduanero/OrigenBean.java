@@ -84,7 +84,7 @@ public class OrigenBean implements Serializable{
             }
         } else {
             try {
-                this.OrigenServicio.crearOrigen(this.origen);
+                this.OrigenServicio.actualizarOrigen(this.origen);
                 this.enModificar = false;
                 this.Origenes = this.OrigenServicio.obtenerOrigen();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Origen Actualizado","");

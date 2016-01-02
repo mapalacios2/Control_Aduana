@@ -83,7 +83,7 @@ public class PuertoIngresoBean implements Serializable {
             }
         } else {
             try {
-                this.puertoServicio.crearPuertoIngreso(this.puerto);
+                this.puertoServicio.actualizarPuertoIngreso(this.puerto);
                 this.enModificar = false;
                 this.puertos = this.puertoServicio.obtenerPuertoIngreso();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Puerto Actualizado","");

@@ -86,7 +86,7 @@ public class ProductoBean implements Serializable{
             }
         } else {
             try {
-                this.productoServicio.crearProducto(this.producto);
+                this.productoServicio.actualizarProducto(this.producto);
                 this.enModificar = false;
                 this.Productos = this.productoServicio.obtenerProducto();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Producto Actualizado.","");

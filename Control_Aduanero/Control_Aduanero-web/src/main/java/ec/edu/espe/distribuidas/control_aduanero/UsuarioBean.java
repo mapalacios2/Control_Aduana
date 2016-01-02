@@ -83,7 +83,7 @@ public class UsuarioBean implements Serializable {
             }
         } else {
             try {
-                this.Usuario2Servicio.crearUsuario(this.usuario);
+                this.Usuario2Servicio.actualizarUsuario(this.usuario);
                 this.enModificar = false;
                 this.Usuarios = this.Usuario2Servicio.obtenerUsuario();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Actualizado","");

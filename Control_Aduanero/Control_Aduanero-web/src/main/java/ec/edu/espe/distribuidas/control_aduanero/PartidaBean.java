@@ -84,7 +84,7 @@ public class PartidaBean implements Serializable{
             }
         } else {
             try {
-                this.partidaServicio.crearPartida(this.partida);
+                this.partidaServicio.actualizarPartida(this.partida);
                 this.enModificar = false;
                 this.Partidas = this.partidaServicio.obtenerPartida();
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Partida Actualizada","");
