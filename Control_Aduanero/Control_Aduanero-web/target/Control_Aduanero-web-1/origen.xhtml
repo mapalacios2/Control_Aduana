@@ -26,10 +26,10 @@
             </p:column>    
         </p:dataTable>
         <h:panelGrid columns="5" style="width: 350px">
-            <p:commandButton value="Nuevo" actionListener="#{origenBean.nuevoOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
-            <p:commandButton value="Modificar" actionListener="#{origenBean.modificarOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
-            <p:commandButton value="Detalles" actionListener="#{origenBean.detallesOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
-            <p:commandButton value="Eliminar" actionListener="#{origenBean.eliminarOrigen()}" update="@form" rendered="#{not origenBean.nuevo}"/>
+            <p:commandButton value="Nuevo" actionListener="#{origenBean.nuevoOrigen()}" update="@form"/>
+            <p:commandButton value="Modificar" actionListener="#{origenBean.modificarOrigen()}" update="@form"/>
+            <p:commandButton value="Detalles" actionListener="#{origenBean.detallesOrigen()}" update="@form"/>
+            <p:commandButton value="Eliminar" actionListener="#{origenBean.eliminarOrigen()}" update="@form"/>
         </h:panelGrid>
         <p:panel header="#{origenBean.tituloFormulario}" style="width: 500px" rendered="#{origenBean.enNueva || origenBean.enModificar || origenBean.enDetalles || origenBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">

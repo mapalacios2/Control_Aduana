@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
+import ec.edu.espe.distribuidas.modelo.CabeceraDeclaracion;
 import ec.edu.espe.distribuidas.modelo.Declaracion;
 import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.Origen;
@@ -60,6 +61,7 @@ public class DeclaracionBean implements Serializable {
     private List<Declaracion> declaraciones;
     private Integer cantidad;
     private Declaracion declaracion;
+    private CabeceraDeclaracion cabeceraDeclaracion;
 
     @PostConstruct
     public void init() {
@@ -73,7 +75,7 @@ public class DeclaracionBean implements Serializable {
     public void buscarImportador() {
         this.importador = this.importadorServicio.obtenerOperadorPorCedula(this.cedula);
         if (this.importador != null) {
-            //this.guardarDeclaracion();            
+            this.guardarDeclaracion();            
         } else {
             this.mostrarMensaje(FacesMessage.SEVERITY_WARN, "Importador no registrado.");
         }
@@ -85,22 +87,23 @@ public class DeclaracionBean implements Serializable {
         this.origenes.remove(0);
     }
     
-//    public void guardarDeclaracion() {
-//        this.declaracion = new Declaracion();
-//        //this.declaracion.setCedula(this.cedula);
-//        this.declaracion.setImportador(this.importador);
-//        this.declaracion.setFechaLlegada(new Date());
-//        this.declaracion.setTotalProducto(this.productoSeleccionado.getValorProducto());
-//        this.declaracion.setTotalArancel(this.productoSeleccionado.getValorArancel());
-//        this.declaracionServicio.crearDeclaracion(this.declaracion);
-//        this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.declaracion);
-//    }
+    public void guardarDeclaracion() {
+        this.cabeceraDeclaracion = new CabeceraDeclaracion();
+        this.cabeceraDeclaracion.setImportador(this.importador);
+        this.cabeceraDeclaracion.setCedula(importador.getCodigoImportador());
+        this.cabeceraDeclaracion.setFechaLlegada(new Date());
+        this.cabeceraDeclaracion.setTotalProducto(new BigDecimal(0));
+        this.cabeceraDeclaracion.setTotalArancel(new BigDecimal(0));
+        this.cabeceraDeclaracion.setTotal(new BigDecimal(0));
+        this.declaracionServicio.crearDeclaracion(this.cabeceraDeclaracion);
+        this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.cabeceraDeclaracion);
+    }
     
     public void guardarDetalleDeclaracion() {   
         try {
-        this.declaracionServicio.insertarDeclaracion(this.declaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador);
-        //this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.declaracion);
+        this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador);
         this.declaraciones = this.declaracionServicio.obtenerDeclaracion();
+        this.declaracionServicio.calcularTotalesDeclaracion(this.cabeceraDeclaracion);
         this.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Declaracion Generada");
          } catch (Exception e) {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al generar Declaracion. ", e.getMessage());
@@ -124,6 +127,15 @@ public class DeclaracionBean implements Serializable {
         context.addMessage(null, new FacesMessage(severityMessage, "Mensaje:", mensaje));
     }
 
+    public CabeceraDeclaracion getCabeceraDeclaracion() {
+        return cabeceraDeclaracion;
+    }
+
+    public void setCabeceraDeclaracion(CabeceraDeclaracion cabeceraDeclaracion) {
+        this.cabeceraDeclaracion = cabeceraDeclaracion;
+    }
+    
+    
     public ImportadorServicio getImportadorServicio() {
         return importadorServicio;
     }

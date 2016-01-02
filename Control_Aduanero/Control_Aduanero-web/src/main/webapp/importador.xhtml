@@ -18,9 +18,6 @@
             <p:column filterBy="#{operador.nombre}" headerText="Nombre" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{operador.nombre}" />
             </p:column>
-            <p:column filterBy="#{operador.identificacion}" headerText="Identificacion" style="width: 150px;" filterMatchMode="contains" >
-                <h:outputText value="#{operador.identificacion}" />
-            </p:column>
              <p:column filterBy="#{operador.direccion}" headerText="Direccion" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{operador.direccion}" />
             </p:column>
@@ -43,9 +40,6 @@
                 <p:outputLabel for="nombre" value="Nombre:" />
                 <p:inputText id="nombre" value="#{importadorBean.operador.nombre}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
                 <p:message for="nombre" />
-                <p:outputLabel for="identificacion" value="Identificacion:" />
-                <p:inputText id="identificacion" value="#{importadorBean.operador.identificacion}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
-                <p:message for="identificacion" />
                 <p:outputLabel for="direccion" value="Direccion:" />
                 <p:inputText id="direccion" value="#{importadorBean.operador.direccion}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
                 <p:message for="direccion" />

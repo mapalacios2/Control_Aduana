@@ -18,9 +18,6 @@
             <p:column filterBy="#{usuario.codigoImportador}" headerText="Codigo Importador" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{usuario.codigoImportador}" />
             </p:column>
-            <p:column filterBy="#{usuario.tipoUsuario}" headerText="Tipo Usuario" filterMatchMode="contains" style="width: 150px;" >
-                <h:outputText value="#{usuario.tipoUsuario}" />
-            </p:column>
             <p:column filterBy="#{usuario.nombre}" headerText="Usuario" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{usuario.nombre}" />
             </p:column>
@@ -43,9 +40,6 @@
                 <p:outputLabel for="codigoImportador" value="Codigo Importador:" />
                 <p:inputText id="codigoImportador" value="#{usuarioBean.usuario.codigoImportador}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
                 <p:message for="codigoImportador" />
-                <p:outputLabel for="tipoUsuario" value="Tipo Usuario:" />
-                <p:inputText id="tipoUsuario" value="#{usuarioBean.usuario.tipoUsuario}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
-                <p:message for="tipoUsuario" />
                 <p:outputLabel for="nombre" value="Usuario:" />
                 <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
                 <p:message for="nombre" />

@@ -16,7 +16,7 @@
                          sticky="false"
                          /> 
                 <h:panelGrid columns="4" style="width: 600px">
-                    <p:outputLabel for="cedula" value="Codigo:" style="font-weight: bold"/>
+                    <p:outputLabel for="cedula" value="Cedula:" style="font-weight: bold"/>
                     <p:inputText id="cedula" value="#{declaracionBean.cedula}"/>
                     <p:outputLabel value="Buscar" style="font-weight: bold"/>
                     <p:commandButton id="btnBuscar" icon="ui-icon-circle-zoomin" actionListener="#{declaracionBean.buscarImportador()}" 
@@ -136,11 +136,11 @@
                     </p:column>
                     
                     <p:column headerText="TOTAL PRODUCTO">
-                        <h:outputText value="#{declaracion.totalProducto}" />
+                        <h:outputText value="#{declaracion.precioUnitario}" />
                     </p:column>
 
                     <p:column headerText="TOTAL ARANCEL">
-                        <h:outputText value="#{declaracion.totalArancel}" />
+                        <h:outputText value="#{declaracion.valorArancel}" />
                     </p:column>
 
                 </p:dataTable> 
@@ -148,10 +148,12 @@
 
             <p:panel style="width: 870px">
                 <h:panelGrid id="pgTotales" columns="2">
-                    <p:outputLabel value="TOTAL PRODUCTOS:" style="font-weight: bold"/>
-                    <p:outputLabel value="#{declaracion.totalProducto}"/>
-                    <p:outputLabel value="TOTAL ARANCEL:" style="font-weight: bold"/>
-                    <p:outputLabel value="#{declaracion.totalArancel}"/>
+                    <p:outputLabel value="Total Producto: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{declaracionBean.cabeceraDeclaracion.totalProducto}"/>
+                    <p:outputLabel value="Total Arancel: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{declaracionBean.cabeceraDeclaracion.totalArancel}"/>
+                    <p:outputLabel value="Total: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{declaracionBean.cabeceraDeclaracion.total}"/>
                 </h:panelGrid>
                 <p:spacer height="10"/>
                 <p:commandButton id="btnOk" value="OK" icon="ui-icon-plusthick" type="submit"

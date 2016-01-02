@@ -45,9 +45,9 @@ public class DetalleFactura implements Serializable{
     @Column(name = "TOTAL",nullable = false)       
     private BigDecimal total;
     
-    @JoinColumn(name = "COD_DECLARACION", referencedColumnName = "COD_DECLARACION", insertable = false, updatable = false)
+    @JoinColumn(name = "COD_CABECERA", referencedColumnName = "COD_CABECERA", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private Declaracion declaracion;
+    private CabeceraDeclaracion cabeceraDeclaracion;
     
     @JoinColumn(name = "COD_FACTURA", referencedColumnName = "COD_FACTURA", insertable = false, updatable = false)
     @ManyToOne(optional = false)

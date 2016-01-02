@@ -115,7 +115,7 @@ public class UsuarioBean implements Serializable {
         this.usuario= new Usuario();
         this.usuario.setCodigoUsuario(this.UsuarioSeleccionado.getCodigoUsuario());
         this.usuario.setCodigoImportador(this.UsuarioSeleccionado.getCodigoImportador());
-        this.usuario.setTipoUsuario(this.UsuarioSeleccionado.getTipoUsuario());        
+//        this.usuario.setTipoUsuario(this.UsuarioSeleccionado.getTipoUsuario());        
         this.usuario.setNombre(this.UsuarioSeleccionado.getNombre());
         this.usuario.setClave(this.UsuarioSeleccionado.getClave());
         this.usuario.setFechaRegistro(this.UsuarioSeleccionado.getFechaRegistro());

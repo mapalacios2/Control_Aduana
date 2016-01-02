@@ -35,11 +35,11 @@ public class Usuario implements Serializable {
     @Column(name = "COD_USUARIO",nullable = false)       
     private String codigoUsuario;
      
-    @Column(name = "COD_IMPORTADOR",nullable = false)       
+    @Column(name = "CEDULA",nullable = false)       
     private String codigoImportador;
     
-    @Column(name = "TIPO_USUARIO",nullable = false)       
-    private String tipoUsuario;
+//    @Column(name = "TIPO_USUARIO",nullable = false)       
+//    private String tipoUsuario;
     
     @Column(name = "NOMBRE",nullable = false)       
     private String nombre;
@@ -51,17 +51,17 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
     
-    @JoinColumn(name = "COD_IMPORTADOR", referencedColumnName = "COD_IMPORTADOR", insertable = false, updatable = false)
+    @JoinColumn(name = "CEDULA", referencedColumnName = "CEDULA", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Importador importador;
     
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
+//    public void setTipoUsuario(String tipoUsuario) {
+//        this.tipoUsuario = tipoUsuario;
+//    }
+//
+//    public String getTipoUsuario() {
+//        return tipoUsuario;
+//    }
 
     public String getCodigoUsuario() {
         return codigoUsuario;
@@ -140,7 +140,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "codigoUsuario=" + codigoUsuario + ", codigoImportador=" + codigoImportador + ", TipoUsuario=" + tipoUsuario + ", nombre=" + nombre + ", clave=" + clave + ", fechaRegistro=" + fechaRegistro + ", importador=" + importador + '}';
+        return "Usuario{" + "codigoUsuario=" + codigoUsuario + ", codigoImportador=" + codigoImportador + ", nombre=" + nombre + ", clave=" + clave + ", fechaRegistro=" + fechaRegistro + ", importador=" + importador + '}';
     }
 
   

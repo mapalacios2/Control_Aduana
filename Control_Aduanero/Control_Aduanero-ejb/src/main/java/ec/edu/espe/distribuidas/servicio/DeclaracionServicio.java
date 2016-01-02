@@ -5,14 +5,15 @@
  */
 package ec.edu.espe.distribuidas.servicio;
 
+
+import ec.edu.espe.distribuidas.modelo.CabeceraDeclaracion;
 import ec.edu.espe.distribuidas.modelo.Declaracion;
-import ec.edu.espe.distribuidas.modelo.DetalleFactura;
 import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.Origen;
 import ec.edu.espe.distribuidas.modelo.Producto;
 import ec.edu.espe.distribuidas.modelo.PuertoIngreso;
+import ec.edu.espe.distribuidas.modelo.dao.CabeceraDeclaracionDAO;
 import ec.edu.espe.distribuidas.modelo.dao.DeclaracionDAO;
-import ec.edu.espe.distribuidas.modelo.dao.DetalleFacturaDAO;
 import ec.edu.espe.distribuidas.modelo.dao.ImportadorDAO;
 import ec.edu.espe.distribuidas.modelo.dao.OrigenDAO;
 import ec.edu.espe.distribuidas.modelo.dao.ProductoDAO;
@@ -42,59 +43,59 @@ public class DeclaracionServicio {
     @EJB
     DeclaracionDAO declaracionDAO;
     @EJB
-    DetalleFacturaDAO detalleFacturaDAO;
+    CabeceraDeclaracionDAO cabeceraDeclaracionDAO;
     @EJB
     ImportadorDAO importadorDAO;
 
-    public void crearDeclaracion(Declaracion declaracion) {
-        this.declaracionDAO.insert(declaracion);
+    public void crearDeclaracion(CabeceraDeclaracion cabeceraDeclaracion) {
+        this.cabeceraDeclaracionDAO.insert(cabeceraDeclaracion);
     }
 
-    public void crearCabeceraDeclaracion(Declaracion declaracion) {
-        Importador importadorTemp = this.importadorDAO.findById(declaracion.getCodigoImportador(), false);
+    public void crearCabeceraDeclaracion(CabeceraDeclaracion cabeceraDeclaracion) {
+        Importador importadorTemp = this.importadorDAO.findById(cabeceraDeclaracion.getCedula(), false);
         Date fecha = new Date();
         if (importadorTemp != null) {
-            declaracion.setImportador(importadorTemp);
-            declaracion.setFechaLlegada(fecha);
+            cabeceraDeclaracion.setImportador(importadorTemp);
+            cabeceraDeclaracion.setFechaLlegada(fecha);
         } else {
             throw new MensajeExcepcion("Importador no encontrado.");
         }
     }
 
-    public void insertarDeclaracion(Declaracion delcaracion, Producto producto, PuertoIngreso puerto, Origen origen, Importador importador) {
-       // Declaracion declaracionTemp = this.declaracionDAO.findById(delcaracion.getCodigoDeclaracion(), false);
+    public void insertarDeclaracion(CabeceraDeclaracion cabeceraDeclaracion, Producto producto, PuertoIngreso puerto, Origen origen, Importador importador) {
+      CabeceraDeclaracion cabeceraDeclaracionTemp = this.cabeceraDeclaracionDAO.findById(cabeceraDeclaracion.getCodigoCabecera(), false);
 //        Servicio servicioTemp = this.servicioDAO.findById(servicio.getCodigo(), false);
 //        Medicamento medicamentoTemp = this.medicamentoDAO.findById(medicamento.getCodigo(), false);
        Declaracion declaracion = new Declaracion();
-//        if (declaracionTemp == null) {
-//            throw new MensajeExcepcion("La declaracion a la que hace referencia no existe.");
-//        } else {
-            if (producto != null) {
-    
+        if (cabeceraDeclaracionTemp == null) {
+            throw new MensajeExcepcion("La declaracion a la que hace referencia el detalle no existe.");
+        } else {
+            if (producto != null && puerto !=null && origen!=null) {
                 declaracion.setProducto(producto);
                 declaracion.setPuertoIngreso(puerto);
                 declaracion.setOrigen(origen);
-                //declaracion.setCodigoDeclaracion(declaracion.getCodigoDeclaracion());
+                //declaracion.setCodigoDeclaracion(cabeceraDeclaracion.getCodigoCabecera());
                 declaracion.setCodigoOrigen(origen.getCodigoOrigen());
                 declaracion.setCodigoPuerto(puerto.getCodigoPuerto());
                 declaracion.setCodigoProducto(producto.getCodigoProducto());
-                declaracion.setCodigoImportador(importador.getCodigoImportador());
-                //calcularTotalesDeclaracion(declaracion);
-                declaracion.setTotalProducto(producto.getValorProducto());
-                declaracion.setTotalArancel(producto.getValorArancel());
-                Date fecha = new Date();
-                declaracion.setFechaLlegada(fecha);
-                declaracion.setCantidadProducto(1);               
+                declaracion.setPrecioUnitario(producto.getValorProducto());
+                declaracion.setValorArancel(producto.getValorArancel());
+                declaracion.setCodigoCabecera(cabeceraDeclaracion.getCodigoCabecera());
+                declaracion.setCantidadProducto(1); 
+                Double total=(declaracion.getPrecioUnitario().doubleValue())*(declaracion.getCantidadProducto());
+                BigDecimal valorTotal = new BigDecimal(total);
+                declaracion.setValorTotal(valorTotal);
                 this.declaracionDAO.insert(declaracion);
             }else {
-                    throw new MensajeExcepcion("No existe el producto para generar la declaracion.");
+                    throw new MensajeExcepcion("Los valores de producto, puerto y origen no pueden ser nulos.");
                 }
+        }
         
     }
 
-    public List<Declaracion> obtenerDetallesPorCodigoDeclaracion(Declaracion declaracion) {
+    public List<Declaracion> obtenerDetallesPorCodigoDeclaracion(CabeceraDeclaracion declaracion) {
         Declaracion declaracionTemp = new Declaracion();
-        declaracionTemp.setCodigoDeclaracion(declaracion.getCodigoDeclaracion());
+        declaracionTemp.setCodigoDeclaracion(declaracion.getCodigoCabecera());
         List<Declaracion> detalles = this.declaracionDAO.find(declaracionTemp);
         if (detalles != null && !detalles.isEmpty()) {
             return detalles;
@@ -105,22 +106,24 @@ public class DeclaracionServicio {
     public List<Declaracion> obtenerDeclaracion(){
         return this.declaracionDAO.findAll();
     }
-//    public void calcularTotalesDeclaracion(Declaracion declaracion)  {
-//        List<Declaracion> detalles = this.obtenerDetallesPorCodigoDeclaracion(declaracion);
-//        BigDecimal totalProducto = new BigDecimal(0.0);
-//        BigDecimal valorArancel = new BigDecimal(0.0);
-//        BigDecimal total = new BigDecimal(0.0);
-//        if (detalles != null && !detalles.isEmpty()) {
-//            for (Declaracion obj : detalles) {
-//                totalProducto = totalProducto.add(obj.getTotalProducto());
-//                valorArancel = valorArancel.add(obj.getTotalArancel());
-//            }
-//        } else {
-//            throw new MensajeExcepcion("No se encontraron detalles de esa declaracion.");
-//        }
-//        declaracion.setTotalProducto(totalProducto);
-//        declaracion.setTotalArancel(valorArancel);
-//        //this.declaracionDAO.update(declaracion);
-//    }
+    public void calcularTotalesDeclaracion(CabeceraDeclaracion cabeceraDeclaracion)  {
+        List<Declaracion> detalles = this.obtenerDetallesPorCodigoDeclaracion(cabeceraDeclaracion);
+        BigDecimal valorTotal = new BigDecimal(0.0);
+        BigDecimal valorArancel = new BigDecimal(0.0);
+        BigDecimal total = new BigDecimal(0.0);
+        if (detalles != null && !detalles.isEmpty()) {
+            for (Declaracion obj : detalles) {
+                valorTotal = valorTotal.add(obj.getPrecioUnitario());
+                valorArancel = valorArancel.add(obj.getValorArancel());
+            }
+        } else {
+            throw new MensajeExcepcion("No se encontraron detalles de esa declaracion.");
+        }
+        total=valorTotal.add(valorArancel);
+        cabeceraDeclaracion.setTotalProducto(valorTotal);
+        cabeceraDeclaracion.setTotalArancel(valorArancel);
+        cabeceraDeclaracion.setTotal(total);
+        this.cabeceraDeclaracionDAO.update(cabeceraDeclaracion);
+    }
     
 }

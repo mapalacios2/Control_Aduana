@@ -115,7 +115,6 @@ public class ImportadorBean implements Serializable {
         this.operador = new Importador();
         this.operador.setCodigoImportador(this.OperadorSeleccionado.getCodigoImportador());      
         this.operador.setNombre(this.OperadorSeleccionado.getNombre());
-        this.operador.setIdentificacion(this.OperadorSeleccionado.getIdentificacion());
         this.operador.setDireccion(this.OperadorSeleccionado.getDireccion());
         this.operador.setTelefono(this.OperadorSeleccionado.getTelefono());
         this.operador.setCorreoElectronico(this.OperadorSeleccionado.getCorreoElectronico());

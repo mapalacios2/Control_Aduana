@@ -29,16 +29,11 @@ import javax.persistence.Table;
 public class Importador implements Serializable{
     
     @Id 
-    @SequenceGenerator(name = "IMPORTADOR_02_SEQ", sequenceName = "IMPORTADOR_02_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "IMPORTADOR_02_SEQ")    
-    @Column(name = "COD_IMPORTADOR",nullable = false)       
+    @Column(name = "CEDULA",nullable = false)       
     private String codigoImportador;
     
     @Column(name = "NOMBRE",nullable = false)       
     private String nombre;
-    
-    @Column(name = "IDENTIFICACION",nullable = false) 
-    private String identificacion;
     
     @Column(name = "DIRECCION",nullable = false) 
     private String direccion;
@@ -55,10 +50,6 @@ public class Importador implements Serializable{
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getIdentificacion() {
-        return identificacion;
     }
 
     public String getDireccion() {
@@ -79,10 +70,6 @@ public class Importador implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
     }
 
     public void setDireccion(String direccion) {
@@ -124,7 +111,7 @@ public class Importador implements Serializable{
 
     @Override
     public String toString() {
-        return "Importador{" + "codigoImportador=" + codigoImportador + ", nombre=" + nombre + ", identificacion=" + identificacion + ", direccion=" + direccion + ", telefono=" + telefono + ", correoElectronico=" + correoElectronico + '}';
+        return "Importador{" + "codigoImportador=" + codigoImportador + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", correoElectronico=" + correoElectronico + '}';
     }
     
    

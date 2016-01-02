@@ -4,13 +4,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2015-12-31T00:53:13")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-01-02T01:22:30")
 @StaticMetamodel(Importador.class)
 public class Importador_ { 
 
     public static volatile SingularAttribute<Importador, String> nombre;
     public static volatile SingularAttribute<Importador, String> codigoImportador;
-    public static volatile SingularAttribute<Importador, String> identificacion;
     public static volatile SingularAttribute<Importador, String> direccion;
     public static volatile SingularAttribute<Importador, String> correoElectronico;
     public static volatile SingularAttribute<Importador, String> telefono;
