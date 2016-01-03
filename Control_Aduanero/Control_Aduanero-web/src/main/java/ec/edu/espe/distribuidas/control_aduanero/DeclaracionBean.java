@@ -59,7 +59,7 @@ public class DeclaracionBean implements Serializable {
     private List<Origen> origenes;  
     private Origen origenSeleccionado;
     private List<Declaracion> declaraciones;
-    private Integer cantidad=0;
+    private Integer cantidad;
     private Declaracion declaracion;
     private CabeceraDeclaracion cabeceraDeclaracion;
 

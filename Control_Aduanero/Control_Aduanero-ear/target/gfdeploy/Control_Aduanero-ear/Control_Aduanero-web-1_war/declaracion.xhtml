@@ -58,13 +58,6 @@
                             <p:column headerText="PORCENTAJE ARANCEL" style="width: 100px">
                                 <h:outputText value="#{producto.porcentajeArancel}" />
                             </p:column>
-                            <p:column  headerText="CANTIDAD" style="width: 100px">
-                                <p:inputText id="cantidad" value="#{declaracionBean.cantidad}" style="width:70px">
-                                    <p:clientValidator event="keyup"/>
-                                </p:inputText>
-                                <p:message for="cantidad" showDetail="true"/>                            
-                            </p:column>
-
                         </p:dataTable>                   
                     </p:tab>
 
@@ -117,6 +110,11 @@
                         </p:dataTable>
                     </p:tab> 
                 </p:tabView>
+                <p:panelGrid columns="3" style="width: 95%">
+                <p:outputLabel for="cantidad" value="Cantidad:" />
+                <p:inputText id="cantidad" value="#{declaracionBean.cantidad}"/>
+                <p:message for="cantidad" />
+                </p:panelGrid>           
                 <p:spacer height="10"/>
                 <p:commandButton id="btnAgregarS" value="Agregar" icon="ui-icon-plusthick"
                                  actionListener="#{declaracionBean.guardarDetalleDeclaracion()}" ajax="false"                                         
@@ -133,8 +131,10 @@
 
                     <p:column headerText="DESCRIPCION">
                         <h:outputText value="#{declaracion.producto.descripcion}" />
+                    </p:column>                    
+                    <p:column headerText="CANTIDAD">
+                        <h:outputText value="#{declaracion.cantidadProducto}" />
                     </p:column>
-
                     <p:column headerText="TOTAL PRODUCTO">
                         <h:outputText value="#{declaracion.precioUnitario}" />
                     </p:column>
