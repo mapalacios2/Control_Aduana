@@ -7,6 +7,7 @@ package ec.edu.espe.distribuidas.control_aduanero;
 
 
 import ec.edu.espe.distribuidas.modelo.Producto;
+import ec.edu.espe.distribuidas.modelo.Subpartida;
 import ec.edu.espe.distribuidas.servicio.ProductoServicio;
 import java.io.Serializable;
 import java.util.List;
@@ -29,6 +30,8 @@ public class ProductoBean implements Serializable{
     
     private List<Producto> Productos;
     
+    private List<Subpartida> subpartidas;
+    
     private Producto producto;
     
     private Producto productoSeleccionado;
@@ -47,6 +50,7 @@ public class ProductoBean implements Serializable{
     @PostConstruct
     public void postConstructor() {
         this.Productos = this.productoServicio.obtenerProducto();
+        this.subpartidas = this.productoServicio.obtenerSubPartida();
     }
 
     public void nuevoProducto() {
@@ -134,6 +138,15 @@ public class ProductoBean implements Serializable{
     public void selectProductoFromDialog(Producto producto) {
         RequestContext.getCurrentInstance().closeDialog(producto);
     }
+
+    public List<Subpartida> getSubpartidas() {
+        return subpartidas;
+    }
+
+    public void setSubpartidas(List<Subpartida> subpartidas) {
+        this.subpartidas = subpartidas;
+    }
+    
 
     public List<Producto> getProductos() {
         return Productos;

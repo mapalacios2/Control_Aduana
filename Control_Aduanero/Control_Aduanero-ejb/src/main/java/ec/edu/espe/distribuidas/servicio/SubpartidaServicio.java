@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.distribuidas.servicio;
 
+import ec.edu.espe.distribuidas.modelo.Partida;
 import ec.edu.espe.distribuidas.modelo.Subpartida;
+import ec.edu.espe.distribuidas.modelo.dao.PartidaDAO;
 import ec.edu.espe.distribuidas.modelo.dao.SubpartidaDAO;
 import java.util.List;
 import javax.ejb.EJB;
@@ -23,6 +25,8 @@ public class SubpartidaServicio {
     
     @EJB
     SubpartidaDAO subpartidaDAO;
+    @EJB
+    PartidaDAO partidaDAO;
     
     public void crearSubpartida(Subpartida subpartida){
         this.subpartidaDAO.insert(subpartida);
@@ -34,6 +38,10 @@ public class SubpartidaServicio {
     
     public List<Subpartida> obtenerSubpartida(){
         return this.subpartidaDAO.findAll();
+    }
+    
+    public List<Partida> obtenerPartidas(){
+        return this.partidaDAO.findAll();
     }
     
     public void actualizarSubpartida(Subpartida subpartida){

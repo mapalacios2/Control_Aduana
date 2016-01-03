@@ -58,13 +58,13 @@
                             <p:column headerText="PORCENTAJE ARANCEL" style="width: 100px">
                                 <h:outputText value="#{producto.porcentajeArancel}" />
                             </p:column>
-
                             <p:column  headerText="CANTIDAD" style="width: 100px">
                                 <p:inputText id="cantidad" value="#{declaracionBean.cantidad}" style="width:70px">
                                     <p:clientValidator event="keyup"/>
                                 </p:inputText>
                                 <p:message for="cantidad" showDetail="true"/>                            
                             </p:column>
+
                         </p:dataTable>                   
                     </p:tab>
 
@@ -134,7 +134,7 @@
                     <p:column headerText="DESCRIPCION">
                         <h:outputText value="#{declaracion.producto.descripcion}" />
                     </p:column>
-                    
+
                     <p:column headerText="TOTAL PRODUCTO">
                         <h:outputText value="#{declaracion.precioUnitario}" />
                     </p:column>

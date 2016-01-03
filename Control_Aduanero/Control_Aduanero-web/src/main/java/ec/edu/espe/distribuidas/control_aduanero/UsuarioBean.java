@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
+import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.Usuario;
 import ec.edu.espe.distribuidas.servicio.Usuario2Servicio;
 import java.io.Serializable;
@@ -25,6 +26,7 @@ import org.primefaces.context.RequestContext;
 @ViewScoped
 public class UsuarioBean implements Serializable {
     private List<Usuario> Usuarios;
+    private List<Importador> importadores;
     
     private Usuario usuario;
 
@@ -44,6 +46,7 @@ public class UsuarioBean implements Serializable {
     @PostConstruct
     public void postConstructor() {
         this.Usuarios = this.Usuario2Servicio.obtenerUsuario();
+        this.importadores = this.Usuario2Servicio.obtenerImportadores();
     }
 
     public void nuevoUsuario() {
@@ -127,6 +130,15 @@ public class UsuarioBean implements Serializable {
         this.enModificar = false;
         this.enDetalles = false;
     }
+
+    public List<Importador> getImportadores() {
+        return importadores;
+    }
+
+    public void setImportadores(List<Importador> importadores) {
+        this.importadores = importadores;
+    }
+    
     
     public void selectUsuarioFromDialog(Usuario usuario) {
         RequestContext.getCurrentInstance().closeDialog(usuario);

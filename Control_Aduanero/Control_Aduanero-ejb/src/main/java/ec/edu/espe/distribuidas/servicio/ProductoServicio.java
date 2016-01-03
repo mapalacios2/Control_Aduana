@@ -6,7 +6,9 @@
 package ec.edu.espe.distribuidas.servicio;
 
 import ec.edu.espe.distribuidas.modelo.Producto;
+import ec.edu.espe.distribuidas.modelo.Subpartida;
 import ec.edu.espe.distribuidas.modelo.dao.ProductoDAO;
+import ec.edu.espe.distribuidas.modelo.dao.SubpartidaDAO;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -23,6 +25,9 @@ public class ProductoServicio {
     @EJB
     ProductoDAO productoDAO;
     
+    @EJB
+    SubpartidaDAO subpartidaDAO;
+    
     public void crearProducto(Producto producto){
         this.productoDAO.insert(producto);
     }
@@ -33,6 +38,10 @@ public class ProductoServicio {
     
     public List<Producto> obtenerProducto(){
         return this.productoDAO.findAll();
+    }
+    
+    public List<Subpartida> obtenerSubPartida(){
+        return this.subpartidaDAO.findAll();
     }
     
     public void actualizarProducto(Producto producto){

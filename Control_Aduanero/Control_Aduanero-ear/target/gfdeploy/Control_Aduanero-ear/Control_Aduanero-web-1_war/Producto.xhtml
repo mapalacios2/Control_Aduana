@@ -4,10 +4,11 @@
                 xmlns:h="http://java.sun.com/jsf/html" 
                 xmlns:ui="http://java.sun.com/jsf/facelets" 
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core" 
                 template="/templates/plantillaUsuario.xhtml">    
 
     <ui:define name="contenido">
-        
+
         <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Producto</font></h3>
         <p:dataTable var="producto" value="#{productoBean.productos}" scrollable="true" scrollHeight="150" style="width: 620px"
                      selectionMode="single" selection="#{productoBean.productoSeleccionado}" rowKey="#{producto.codigoProducto}" emptyMessage="No existen registros." >
@@ -40,9 +41,11 @@
         <p:panel header="#{productoBean.tituloFormulario}" style="width: 500px" rendered="#{productoBean.enNueva || productoBean.enModificar || productoBean.enDetalles || productoBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
 
-                <p:outputLabel for="subpartida" value="Subpartida:" />
-                <p:inputText id="subpartida" value="#{productoBean.producto.codigoSubpartida}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
-                <p:message for="subpartida" />
+                <p:outputLabel for="codigoSubpartida" value="Subpartida:" />                
+                <p:selectOneMenu id="codigoSubpartida" value="#{productoBean.producto.codigoSubpartida}" required="true" style="width: 200px;" disabled="#{productoBean.enDetalles}" >
+                    <f:selectItems value="#{productoBean.subpartidas}" var="subpartidas" itemLabel="#{subpartidas.codigoSubpartida}" itemValue="#{subpartidas.codigoSubpartida}"/>                    
+                </p:selectOneMenu>
+                <p:message for="codigoSubpartida" />
                 <p:outputLabel for="descripcion" value="Descripcion:" />
                 <p:inputText id="descripcion" value="#{productoBean.producto.descripcion}" style="width: 200px;" required="true" readonly="#{productoBean.enDetalles}"/>
                 <p:message for="descripcion" />
@@ -55,7 +58,7 @@
                 <p:outputLabel for="porcentajeArancel" value="Porcentaje Arancel:" />
                 <p:inputText id="porcentajeArancel" value="#{productoBean.producto.porcentajeArancel}" style="width: 100px;" required="true" readonly="#{productoBean.enDetalles || productoBean.enModificar}"/>
                 <p:message for="porcentajeArancel" />
-                
+
             </p:panelGrid>
             <p:commandButton value="Guardar" actionListener="#{productoBean.guardarProducto()}" rendered="#{not productoBean.enDetalles}" update="@form"/>
             <p:commandButton value="Cancelar" actionListener="#{productoBean.cancelar()}" immediate="true" update="@form"/>

@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
+import ec.edu.espe.distribuidas.modelo.Partida;
 import ec.edu.espe.distribuidas.modelo.Subpartida;
 import ec.edu.espe.distribuidas.servicio.SubpartidaServicio;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ import org.primefaces.context.RequestContext;
 public class SubpartidaBean implements Serializable{
     
     private List<Subpartida> Subpartidas;
+    private List<Partida> partidas;
     
     private Subpartida subpartida;
     
@@ -45,6 +47,7 @@ public class SubpartidaBean implements Serializable{
     @PostConstruct
     public void postConstructor() {
         this.Subpartidas = this.subpartidaServicio.obtenerSubpartida();
+        this.partidas = this.subpartidaServicio.obtenerPartidas();
     }
 
     public void nuevaSubpartida() {
@@ -130,6 +133,15 @@ public class SubpartidaBean implements Serializable{
         RequestContext.getCurrentInstance().closeDialog(subpartida);
     }
 
+    public List<Partida> getPartidas() {
+        return partidas;
+    }
+
+    public void setPartidas(List<Partida> partidas) {
+        this.partidas = partidas;
+    }
+    
+    
     public List<Subpartida> getSubpartidas() {
         return Subpartidas;
     }

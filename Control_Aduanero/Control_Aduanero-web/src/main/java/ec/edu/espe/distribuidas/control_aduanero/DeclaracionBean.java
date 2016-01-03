@@ -59,7 +59,7 @@ public class DeclaracionBean implements Serializable {
     private List<Origen> origenes;  
     private Origen origenSeleccionado;
     private List<Declaracion> declaraciones;
-    private Integer cantidad;
+    private Integer cantidad=0;
     private Declaracion declaracion;
     private CabeceraDeclaracion cabeceraDeclaracion;
 
@@ -101,7 +101,7 @@ public class DeclaracionBean implements Serializable {
     
     public void guardarDetalleDeclaracion() {   
         try {
-        this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador,this.cantidad);
+        this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador, cantidad);
         this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.cabeceraDeclaracion);
         this.declaracionServicio.calcularTotalesDeclaracion(this.cabeceraDeclaracion);
         this.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Declaracion Generada");

@@ -4,10 +4,11 @@
                 xmlns:h="http://java.sun.com/jsf/html" 
                 xmlns:ui="http://java.sun.com/jsf/facelets" 
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core" 
                 template="/templates/plantillaUsuario.xhtml">    
 
     <ui:define name="contenido">
-        
+
         <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Subpartida</font></h3>
         <p:dataTable var="subpartida" value="#{subpartidaBean.subpartidas}" scrollable="true" scrollHeight="150" style="width: 620px"
                      selectionMode="single" selection="#{subpartidaBean.subpartidaSeleccionada}" rowKey="#{subpartida.codigoSubpartida}" emptyMessage="No existen registros." >
@@ -34,9 +35,11 @@
                 <p:outputLabel for="codigo" value="Codigo:" />
                 <p:inputText id="codigo" value="#{subpartidaBean.subpartida.codigoSubpartida}" style="width: 100px;" required="true" readonly="#{subpartidaBean.enDetalles || subpartidaBean.enModificar}"/>
                 <p:message for="codigo" />
-                <p:outputLabel for="partida" value="Partida:" />
-                <p:inputText id="partida" value="#{subpartidaBean.subpartida.codigoPartida}" style="width: 100px;" required="true" readonly="#{subpartidaBean.enDetalles || subpartidaBean.enModificar}"/>
-                <p:message for="partida" />
+                <p:outputLabel for="codigoPartida" value="Partida:" />                
+                <p:selectOneMenu id="codigoPartida" value="#{subpartidaBean.subpartida.codigoPartida}" required="true" style="width: 200px;" disabled="#{subpartidaBean.enDetalles}" >
+                    <f:selectItems value="#{subpartidaBean.partidas}" var="partidas" itemLabel="#{partidas.codigoPartida}" itemValue="#{partidas.codigoPartida}"/>                    
+                </p:selectOneMenu>
+                <p:message for="codigoPartida" />
                 <p:outputLabel for="descripcion" value="Descripcion:" />
                 <p:inputText id="descripcion" value="#{subpartidaBean.subpartida.desSubpartida}" style="width: 200px;" required="true" readonly="#{subpartidaBean.enDetalles}"/>
                 <p:message for="descripcion" />

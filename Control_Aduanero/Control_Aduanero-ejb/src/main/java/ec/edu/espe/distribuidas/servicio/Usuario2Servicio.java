@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.distribuidas.servicio;
 
+import ec.edu.espe.distribuidas.modelo.Importador;
 import ec.edu.espe.distribuidas.modelo.Usuario;
+import ec.edu.espe.distribuidas.modelo.dao.ImportadorDAO;
 import ec.edu.espe.distribuidas.modelo.dao.UsuarioDAO;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,6 +24,9 @@ public class Usuario2Servicio {
     @EJB
    UsuarioDAO UsuarioDAO;
     
+     @EJB
+   ImportadorDAO importadorDAO;
+    
     public void crearUsuario(Usuario usuario) {
         this.UsuarioDAO.insert(usuario);
     }
@@ -31,6 +36,11 @@ public class Usuario2Servicio {
     }
     public List<Usuario> obtenerUsuario() {
         return this.UsuarioDAO.findAll();
+    }
+    
+        
+    public List<Importador> obtenerImportadores() {
+        return this.importadorDAO.findAll();
     }
     
     public void actualizarUsuario(Usuario usuario) {

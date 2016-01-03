@@ -4,10 +4,11 @@
                 xmlns:h="http://java.sun.com/jsf/html" 
                 xmlns:ui="http://java.sun.com/jsf/facelets" 
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core" 
                 template="/templates/plantillaUsuario.xhtml">    
 
     <ui:define name="contenido">
-        
+
         <h3 style="margin-top:0"><font color= "#ffffff">Gestion de Usuarios</font></h3>
         <p:dataTable var="usuario" value="#{usuarioBean.usuarios}" scrollable="true" scrollHeight="150" style="width: 620px"
                      selectionMode="single" selection="#{usuarioBean.usuarioSeleccionado}" rowKey="#{usuario.codigoUsuario}" emptyMessage="No existen registros." >
@@ -24,7 +25,7 @@
             <p:column filterBy="#{usuario.clave}" headerText="Clave" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{usuario.clave}" />
             </p:column>
-             <p:column filterBy="#{usuario.fechaRegistro}" headerText="Fecha Registro" style="width: 150px;" filterMatchMode="contains" >
+            <p:column filterBy="#{usuario.fechaRegistro}" headerText="Fecha Registro" style="width: 150px;" filterMatchMode="contains" >
                 <h:outputText value="#{usuario.fechaRegistro}" />
             </p:column>
         </p:dataTable>
@@ -36,9 +37,11 @@
         </h:panelGrid>
         <p:panel header="#{usuarioBean.tituloFormulario}" style="width: 500px" rendered="#{usuarioBean.enNueva || usuarioBean.enModificar || usuarioBean.enDetalles || usuarioBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
-                
-                <p:outputLabel for="codigoImportador" value="Codigo Importador:" />
-                <p:inputText id="codigoImportador" value="#{usuarioBean.usuario.codigoImportador}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
+
+                <p:outputLabel for="codigoImportador" value="Cedula:" />                
+                <p:selectOneMenu id="codigoImportador" value="#{usuarioBean.usuario.codigoImportador}" required="true" style="width: 200px;" disabled="#{usuarioBean.enDetalles}" >
+                    <f:selectItems value="#{usuarioBean.importadores}" var="importadores" itemLabel="#{importadores.codigoImportador}" itemValue="#{importadores.codigoImportador}"/>                    
+                </p:selectOneMenu>
                 <p:message for="codigoImportador" />
                 <p:outputLabel for="nombre" value="Usuario:" />
                 <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
