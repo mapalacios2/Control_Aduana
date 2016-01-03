@@ -68,7 +68,7 @@ public class DeclaracionBean implements Serializable {
         this.productos = this.productoServicio.obtenerProducto();
         this.puertos = this.puertoServicio.obtenerPuertoIngreso();
         this.origenes = this.origenServicio.obtenerOrigen();
-        this.declaraciones = this.declaracionServicio.obtenerDeclaracion();
+        //this.declaraciones = this.declaracionServicio.obtenerDeclaracion();
         //this.clasificar();
     }
     
@@ -101,8 +101,8 @@ public class DeclaracionBean implements Serializable {
     
     public void guardarDetalleDeclaracion() {   
         try {
-        this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador);
-        this.declaraciones = this.declaracionServicio.obtenerDeclaracion();
+        this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador,this.cantidad);
+        this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.cabeceraDeclaracion);
         this.declaracionServicio.calcularTotalesDeclaracion(this.cabeceraDeclaracion);
         this.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Declaracion Generada");
          } catch (Exception e) {

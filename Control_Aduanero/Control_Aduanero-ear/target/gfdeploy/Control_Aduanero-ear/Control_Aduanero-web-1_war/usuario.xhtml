@@ -36,7 +36,7 @@
         </h:panelGrid>
         <p:panel header="#{usuarioBean.tituloFormulario}" style="width: 500px" rendered="#{usuarioBean.enNueva || usuarioBean.enModificar || usuarioBean.enDetalles || usuarioBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
-
+                
                 <p:outputLabel for="codigoImportador" value="Codigo Importador:" />
                 <p:inputText id="codigoImportador" value="#{usuarioBean.usuario.codigoImportador}" style="width: 200px;" required="true" readonly="#{usuarioBean.enDetalles}"/>
                 <p:message for="codigoImportador" />

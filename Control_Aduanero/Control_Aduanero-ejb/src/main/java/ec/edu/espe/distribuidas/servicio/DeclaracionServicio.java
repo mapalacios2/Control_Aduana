@@ -62,7 +62,7 @@ public class DeclaracionServicio {
         }
     }
 
-    public void insertarDeclaracion(CabeceraDeclaracion cabeceraDeclaracion, Producto producto, PuertoIngreso puerto, Origen origen, Importador importador) {
+    public void insertarDeclaracion(CabeceraDeclaracion cabeceraDeclaracion, Producto producto, PuertoIngreso puerto, Origen origen, Importador importador, Integer cantidad) {
       CabeceraDeclaracion cabeceraDeclaracionTemp = this.cabeceraDeclaracionDAO.findById(cabeceraDeclaracion.getCodigoCabecera(), false);
 //        Servicio servicioTemp = this.servicioDAO.findById(servicio.getCodigo(), false);
 //        Medicamento medicamentoTemp = this.medicamentoDAO.findById(medicamento.getCodigo(), false);
@@ -81,7 +81,7 @@ public class DeclaracionServicio {
                 declaracion.setPrecioUnitario(producto.getValorProducto());
                 declaracion.setValorArancel(producto.getValorArancel());
                 declaracion.setCodigoCabecera(cabeceraDeclaracion.getCodigoCabecera());
-                declaracion.setCantidadProducto(1); 
+                declaracion.setCantidadProducto(cantidad); 
                 Double total=(declaracion.getPrecioUnitario().doubleValue())*(declaracion.getCantidadProducto());
                 BigDecimal valorTotal = new BigDecimal(total);
                 declaracion.setValorTotal(valorTotal);
@@ -93,9 +93,9 @@ public class DeclaracionServicio {
         
     }
 
-    public List<Declaracion> obtenerDetallesPorCodigoDeclaracion(CabeceraDeclaracion declaracion) {
+    public List<Declaracion> obtenerDetallesPorCodigoDeclaracion(CabeceraDeclaracion cabeceraDeclaracion) {
         Declaracion declaracionTemp = new Declaracion();
-        declaracionTemp.setCodigoDeclaracion(declaracion.getCodigoCabecera());
+        declaracionTemp.setCodigoCabecera(cabeceraDeclaracion.getCodigoCabecera());
         List<Declaracion> detalles = this.declaracionDAO.find(declaracionTemp);
         if (detalles != null && !detalles.isEmpty()) {
             return detalles;
@@ -113,7 +113,7 @@ public class DeclaracionServicio {
         BigDecimal total = new BigDecimal(0.0);
         if (detalles != null && !detalles.isEmpty()) {
             for (Declaracion obj : detalles) {
-                valorTotal = valorTotal.add(obj.getPrecioUnitario());
+                valorTotal = valorTotal.add(obj.getValorTotal());
                 valorArancel = valorArancel.add(obj.getValorArancel());
             }
         } else {

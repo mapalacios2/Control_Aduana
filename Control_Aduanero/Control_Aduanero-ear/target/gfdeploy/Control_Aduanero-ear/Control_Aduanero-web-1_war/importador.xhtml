@@ -37,6 +37,9 @@
         <p:panel header="#{importadorBean.tituloFormulario}" style="width: 500px" rendered="#{importadorBean.enNueva || importadorBean.enModificar || importadorBean.enDetalles || importadorBean.nuevo}">
             <p:panelGrid columns="3" style="width: 95%">
 
+                <p:outputLabel for="codigoImportador" value="Cedula:" />
+                <p:inputText id="codigoImportador" value="#{importadorBean.operador.codigoImportador}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
+                <p:message for="codigoImportador" />
                 <p:outputLabel for="nombre" value="Nombre:" />
                 <p:inputText id="nombre" value="#{importadorBean.operador.nombre}" style="width: 200px;" required="true" readonly="#{importadorBean.enDetalles}"/>
                 <p:message for="nombre" />
