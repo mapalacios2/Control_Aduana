@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>Control_Aduanero</artifactId>
-    <groupId>ec.edu.espe.distribuidas.control_aduanero</groupId>
-    <version>1</version>
-  </parent>
+        <artifactId>Control_Aduanero</artifactId>
+        <groupId>ec.edu.espe.distribuidas.control_aduanero</groupId>
+        <version>1</version>
+    </parent>
 
     <groupId>ec.edu.espe.distribuidas.control_aduanero</groupId>
     <artifactId>Control_Aduanero-ejb</artifactId>
@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-     <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -32,76 +32,81 @@
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.antlr</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.asm</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.core</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.jpa</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.jpa.modelgen</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.moxy</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>org.eclipse.persistence.oracle</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
-             <groupId>unknown.binary</groupId>
-             <artifactId>javax.persistence</artifactId>
-             <version>SNAPSHOT</version>
-             <scope>provided</scope>
-         </dependency>
-         <dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.antlr</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.asm</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.core</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.jpa.modelgen</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.moxy</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>org.eclipse.persistence.oracle</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.4</version>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
         </dependency>
         <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>1.8.0</version>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.0</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
         </dependency>
-    
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

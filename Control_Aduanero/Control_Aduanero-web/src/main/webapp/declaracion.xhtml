@@ -136,7 +136,7 @@
                         <h:outputText value="#{declaracion.cantidadProducto}" />
                     </p:column>
                     <p:column headerText="TOTAL PRODUCTO">
-                        <h:outputText value="#{declaracion.precioUnitario}" />
+                        <h:outputText value="#{declaracion.valorTotal}" />
                     </p:column>
 
                     <p:column headerText="TOTAL ARANCEL">
@@ -156,8 +156,8 @@
                     <p:outputLabel value="#{declaracionBean.cabeceraDeclaracion.total}"/>
                 </h:panelGrid>
                 <p:spacer height="10"/>
-                <p:commandButton id="btnOk" value="OK" icon="ui-icon-plusthick" type="submit"
-                                 actionListener="#{facturaBean.direccionarAdminUsuario()}" ajax="false"                                       
+                <p:commandButton id="btnOk" value="ENVIAR CORREO:" icon="ui-icon-plusthick" type="submit"
+                                 actionListener="#{facturaBean.enviarCorreo()}" ajax="false"                                       
                                  update="@form"/>         
             </p:panel>
         </h:form>

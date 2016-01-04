@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
+import com.persist.common.exception.mail.Email;
 import ec.edu.espe.distribuidas.modelo.CabeceraDeclaracion;
 import ec.edu.espe.distribuidas.modelo.Declaracion;
 import ec.edu.espe.distribuidas.modelo.Importador;
@@ -125,6 +126,16 @@ public class DeclaracionBean implements Serializable {
     public void mostrarMensaje(FacesMessage.Severity severityMessage, String mensaje) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(severityMessage, "Mensaje:", mensaje));
+    }
+    
+    public void EnviarCorreo()
+    {
+        Email email = new Email();
+        try {
+        email.enviarCorreo("mapalacios235@gmail.com","raquel91",importador.getCorreoElectronico(),"prueba","Prueba");
+        }catch (Exception e) {
+            Logger.getLogger(DeclaracionBean.class.getName()).log(Level.SEVERE, "Error al enviar correo ", e);
+        }
     }
 
     public CabeceraDeclaracion getCabeceraDeclaracion() {

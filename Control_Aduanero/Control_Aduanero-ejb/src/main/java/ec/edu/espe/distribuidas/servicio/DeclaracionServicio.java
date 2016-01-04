@@ -79,11 +79,13 @@ public class DeclaracionServicio {
                 declaracion.setCodigoPuerto(puerto.getCodigoPuerto());
                 declaracion.setCodigoProducto(producto.getCodigoProducto());
                 declaracion.setPrecioUnitario(producto.getValorProducto());
-                declaracion.setValorArancel(producto.getValorArancel());
                 declaracion.setCodigoCabecera(cabeceraDeclaracion.getCodigoCabecera());
                 declaracion.setCantidadProducto(cantidad); 
+                Double arancel=(producto.getValorArancel().doubleValue())*(declaracion.getCantidadProducto());
                 Double total=(declaracion.getPrecioUnitario().doubleValue())*(declaracion.getCantidadProducto());
                 BigDecimal valorTotal = new BigDecimal(total);
+                BigDecimal valorArancel=new BigDecimal(arancel);
+                declaracion.setValorArancel(valorArancel);
                 declaracion.setValorTotal(valorTotal);
                 this.declaracionDAO.insert(declaracion);
             }else {
