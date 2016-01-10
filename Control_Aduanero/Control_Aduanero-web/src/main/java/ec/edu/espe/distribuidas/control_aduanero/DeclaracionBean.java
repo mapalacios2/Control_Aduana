@@ -105,9 +105,9 @@ public class DeclaracionBean implements Serializable {
         this.declaracionServicio.insertarDeclaracion(this.cabeceraDeclaracion, this.productoSeleccionado, this.puertoSeleccionado,this.origenSeleccionado,this.importador, cantidad);
         this.declaraciones = this.declaracionServicio.obtenerDetallesPorCodigoDeclaracion(this.cabeceraDeclaracion);
         this.declaracionServicio.calcularTotalesDeclaracion(this.cabeceraDeclaracion);
-        this.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Declaracion Generada");
+        this.mostrarMensaje(FacesMessage.SEVERITY_INFO, "Detalle Agregado");
          } catch (Exception e) {
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al generar Declaracion. ", e.getMessage());
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Agregar Detalle. ", e.getMessage());
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
     

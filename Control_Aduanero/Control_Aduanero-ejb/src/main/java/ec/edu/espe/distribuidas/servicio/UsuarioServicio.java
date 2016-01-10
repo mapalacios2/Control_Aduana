@@ -7,7 +7,7 @@ package ec.edu.espe.distribuidas.servicio;
 
 import ec.edu.espe.distribuidas.modelo.Usuario;
 import ec.edu.espe.distribuidas.modelo.dao.UsuarioDAO;
-import java.util.ArrayList;
+import ec.edu.espe.distribuidas.util.EncripcionUtil;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -31,5 +31,5 @@ public class UsuarioServicio {
         if(usuarioDAO.find(usuTmp, false).isEmpty()){
             return false;
         }else return true;
-    }
-}
+            }
+        }

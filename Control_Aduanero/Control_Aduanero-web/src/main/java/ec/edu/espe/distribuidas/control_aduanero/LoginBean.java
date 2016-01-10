@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.distribuidas.control_aduanero;
 
+import static ec.edu.espe.distribuidas.modelo.Usuario_.clave;
 import ec.edu.espe.distribuidas.servicio.UsuarioServicio;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
@@ -22,13 +23,13 @@ import org.primefaces.context.RequestContext;
 @ManagedBean
 @ViewScoped
 public class LoginBean implements Serializable{
-    
+
     private String usuario;
     private String password;
     private boolean logeado = false;
     @EJB
     private UsuarioServicio usuarioServicio;
-    
+
      public void login(ActionEvent actionEvent) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg;
@@ -36,7 +37,7 @@ public class LoginBean implements Serializable{
             if (valid) {
                 logeado = true;
                 msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto de: ", usuario);
-            } else {
+        } else {
                 logeado = false;
                 msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
                         "Credenciales no validas");
@@ -46,9 +47,8 @@ public class LoginBean implements Serializable{
             context.addCallbackParam("estaLogeado", logeado);
             if (logeado) {
                 context.addCallbackParam("view", "faces/principal.xhtml");
-            }
+        }
         
-            
     }
 
     public String getUsuario() {
@@ -63,9 +63,25 @@ public class LoginBean implements Serializable{
         return password;
     }
 
+    public boolean isLogeado() {
+        return logeado;
+    }
+
+    public UsuarioServicio getUsuarioServicio() {
+        return usuarioServicio;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
+    public void setLogeado(boolean logeado) {
+        this.logeado = logeado;
+    }
+
+    public void setUsuarioServicio(UsuarioServicio usuarioServicio) {
+        this.usuarioServicio = usuarioServicio;
+    }
+
+
 }

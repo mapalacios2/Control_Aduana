@@ -5,10 +5,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>SISTEMA DE CONTROL DE ADUANAS</title>
+        <title>CONTROL DE ADUANAS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/css/styles.css" type="text/css" media="all"/>
+        <div id="cabecera">
+            <img src="#{facesContext.externalContext.requestContextPath}/images/aduana.gif"/>
+        </div>
+        <h:form>
+            <p:menubar style="height: 25px">                                                                                           
+            </p:menubar>
+        </h:form>
     </h:head>
     <h:body>
-        CONTROL DE ADUANAS
         <br />
         <br />
         <p:growl id="mensajes" sticky="true" showDetail="true" life="3000" />
@@ -21,10 +29,14 @@
             </h:panelGrid>
             <br />
             <p:commandButton value="Iniciar Sesión" action="#{loginBean.login(actionEvent)}"
-                                                 icon="fa-share-square" update=":mensajes"
-                                                 oncomplete="manejarLogin(xhr, status, args)"
-                                                 style="width: auto;"/>
+                             icon="fa-share-square" update=":mensajes"
+                             oncomplete="manejarLogin(xhr, status, args)"
+                             style="width: auto;"/>
         </h:form>
+        <div id="pie">
+            <p:outputLabel style="font-size: small" value="Copyright &#169; 2015"/><br/>
+            <p:outputLabel style="font-size: small" value="Contacto: mapalacios2@gmail.com"/><br/>
+        </div>
     </h:body>
     <script type="text/javascript">
         //<![CDATA[
@@ -35,7 +47,7 @@
                 }, 500);
             }
         }
-     //]]>
+        //]]>
     </script>
 </html>
 
